@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Technos{% endblock %}
+
+{% block body %}
+    <h1>Create new Technos</h1>
+
+    {{ include('technos/_form.html.twig') }}
+
+    <a href="{{ path('technos_index') }}">back to list</a>
+{% endblock %}
