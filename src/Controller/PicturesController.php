@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Pictures;
 use App\Form\PicturesType;
 use App\Repository\PicturesRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,8 @@ class PicturesController extends AbstractController
 {
     /**
      * @Route("/", name="pictures_index", methods={"GET"})
+     * @param PicturesRepository $picturesRepository
+     * @return Response
      */
     public function index(PicturesRepository $picturesRepository): Response
     {
@@ -27,6 +30,8 @@ class PicturesController extends AbstractController
 
     /**
      * @Route("/new", name="pictures_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +55,8 @@ class PicturesController extends AbstractController
 
     /**
      * @Route("/{id}", name="pictures_show", methods={"GET"})
+     * @param Pictures $picture
+     * @return Response
      */
     public function show(Pictures $picture): Response
     {
@@ -60,6 +67,10 @@ class PicturesController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="pictures_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Pictures $picture
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Pictures $picture): Response
     {
@@ -80,6 +91,10 @@ class PicturesController extends AbstractController
 
     /**
      * @Route("/{id}", name="pictures_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Pictures $picture
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Pictures $picture): Response
     {

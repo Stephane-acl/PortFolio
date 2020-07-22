@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Clients;
 use App\Form\ClientsType;
 use App\Repository\ClientsRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,8 @@ class ClientsController extends AbstractController
 {
     /**
      * @Route("/", name="clients_index", methods={"GET"})
+     * @param ClientsRepository $clientsRepository
+     * @return Response
      */
     public function index(ClientsRepository $clientsRepository): Response
     {
@@ -27,6 +30,8 @@ class ClientsController extends AbstractController
 
     /**
      * @Route("/new", name="clients_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +55,8 @@ class ClientsController extends AbstractController
 
     /**
      * @Route("/{id}", name="clients_show", methods={"GET"})
+     * @param Clients $client
+     * @return Response
      */
     public function show(Clients $client): Response
     {
@@ -60,6 +67,10 @@ class ClientsController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="clients_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Clients $client
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Clients $client): Response
     {
@@ -80,6 +91,10 @@ class ClientsController extends AbstractController
 
     /**
      * @Route("/{id}", name="clients_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Clients $client
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Clients $client): Response
     {
