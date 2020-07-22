@@ -12,8 +12,8 @@ class PicturesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('projects',null, ['choice_label' => 'name'])
+            ->add('name', null, ['label'=>'Nom', 'empty_data' => ''])
+            ->add('projects',null, ['choice_label' => 'name', 'empty_data'=> ''])
         ;
     }
 

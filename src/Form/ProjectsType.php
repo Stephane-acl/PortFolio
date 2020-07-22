@@ -12,11 +12,11 @@ class ProjectsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('date')
-            ->add('clients', null, ['choice_label' => 'name'])
-            ->add('technos', null, ['choice_label' => 'name'])
+            ->add('name',null,['label'=>'Nom', 'empty_data' => ''])
+            ->add('description', null,['label'=>'Description', 'empty_data' => ''])
+            ->add('date',null,['label'=>'Date', 'empty_data' => ''])
+            ->add('clients', null, ['choice_label' => 'name', 'empty_data'=> ''])
+            ->add('technos', null, ['choice_label' => 'name', 'empty_data'=> ''])
         ;
     }
 
