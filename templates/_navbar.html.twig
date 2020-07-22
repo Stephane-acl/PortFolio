@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="{{path('app_homeIndex')}}">Stéphane</a>
+    <a class="navbar-brand" href="{{ path('app_homeIndex') }}">Stéphane</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,9 @@
         <div class="form-inline my-2 my-lg-0">
             <a class="nav-link" href="https://www.linkedin.com/feed/" target="_blank">Linkedin</a>
             <a class="nav-link" href="#">Contact</a>
-            <a class="nav-link" href="#">Admin</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="nav-link" href="{{ path("admin_index") }}">Admin</a>
+            {% endif %}
         </div>
     </div>
 </nav>

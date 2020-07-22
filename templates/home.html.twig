@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+    <div class="header">
+        <div class="header-picture">
+            <img src="{{ asset("img/steph.jpg") }}" alt="image de profile">
+            {% for user in users %}
+                <h5 class="function">{{ user.fonction }}</h5>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

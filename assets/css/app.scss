@@ -1,12 +1,20 @@
-//NavBar mobile view
+// Fonts
+$titlefont: 'Fira Sans', sans-serif;
+$textfont: 'Montserrat', sans-serif;
+
+//NAVBAR MOBILE VIEW
 
 nav {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+
+    a {
+        font-family: $titlefont;
+    }
 }
 
-//NavBar desktop view
+//NAVBAR DESKTOP VIEW
 
 @media all and (min-width: 769px) {
 
@@ -14,5 +22,64 @@ nav {
         margin-left: auto;
         margin-right: auto;
         width: 75%;
+    }
+}
+
+//HOMEPAGE MOBILE VIEW
+
+.header {
+    display: flex;
+    justify-content: center;
+    height: 240px;
+    align-items: center;
+
+    .header-picture {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .function {
+            font-family: $textfont;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+}
+
+//HOMEPAGE DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    .header {
+        display: flex;
+        justify-content: center;
+        height: 550px;
+        align-items: center;
+
+        .header-picture {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .function {
+                font-family: $textfont;
+                font-size: 1.25rem;
+                margin-top: 15px;
+            }
+
+            img {
+                width: 240px;
+                height: 240px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
     }
 }
