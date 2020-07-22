@@ -1,0 +1,181 @@
+// Fonts
+$titlefont: 'Fira Sans', sans-serif;
+$textfont: 'Montserrat', sans-serif;
+//Color
+$primarycolor: #026df0;
+
+//NAVBAR MOBILE VIEW
+
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    a {
+        font-family: $titlefont;
+    }
+}
+
+//NAVBAR DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    nav {
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+    }
+}
+
+//HOMEPAGE MOBILE VIEW
+
+.header {
+    display: flex;
+    justify-content: center;
+    height: 240px;
+    align-items: center;
+    z-index: -1;
+
+    .header-picture {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .function {
+            font-family: $textfont;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+
+        img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .container-arrow {
+
+        justify-content: center;
+
+        .arrow {
+
+            span {
+                display: none;
+            }
+        }
+    }
+}
+
+.container-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title-project {
+        text-align: center;
+        font-size: 1.3rem;
+        font-family: $titlefont;
+    }
+
+    .card-project {
+        margin-bottom: 20px;
+
+        img {
+            height: 270px;
+            width: 270px;
+            object-fit: cover;
+            position: relative;
+        }
+        span {
+            position: absolute;
+            z-index: 1;
+        }
+    }
+}
+
+//HOMEPAGE DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    .header {
+        display: flex;
+        justify-content: center;
+        height: 944px;
+        align-items: center;
+        z-index: -1;
+
+        .header-picture {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .function {
+                font-family: $textfont;
+                font-size: 1.25rem;
+                margin-top: 15px;
+            }
+
+            img {
+                width: 260px;
+                height: 260px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        .container-arrow {
+            justify-content: center;
+            margin-top: 100px;
+
+            .arrow {
+                margin-top: 150px;
+
+                span {
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    border-bottom: 5px solid darkblue;
+                    border-right: 5px solid darkblue;
+                    transform: rotate(45deg);
+                    margin: -10px;
+                    animation: animate 2s infinite;
+                }
+            }
+        }
+    }
+
+    .container-projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title-project {
+            text-align: center;
+            font-size: 2rem;
+            font-family: $titlefont;
+        }
+
+        .container-cards {
+            display: flex;
+            justify-content: center;
+
+            .card-project {
+                margin: 35px 15px 15px 15px;
+
+                img {
+                    height: 400px;
+                    width: 400px;
+                    object-fit: cover;
+                    position: relative;
+                }
+
+                span {
+                    position: absolute;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}
