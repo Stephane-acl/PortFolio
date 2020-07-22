@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Messages;
 use App\Form\MessagesType;
 use App\Repository\MessagesRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,9 @@ class MessagesController extends AbstractController
 {
     /**
      * @Route("/", name="messages_index", methods={"GET"})
+     * @param MessagesRepository $messagesRepository
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(MessagesRepository $messagesRepository): Response
     {
@@ -27,6 +31,8 @@ class MessagesController extends AbstractController
 
     /**
      * @Route("/new", name="messages_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +56,9 @@ class MessagesController extends AbstractController
 
     /**
      * @Route("/{id}", name="messages_show", methods={"GET"})
+     * @param Messages $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Messages $message): Response
     {
@@ -60,6 +69,10 @@ class MessagesController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="messages_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Messages $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Messages $message): Response
     {
@@ -80,6 +93,10 @@ class MessagesController extends AbstractController
 
     /**
      * @Route("/{id}", name="messages_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Messages $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Messages $message): Response
     {

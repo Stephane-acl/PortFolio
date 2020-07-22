@@ -9,6 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
                 <th>Messages</th>
                 <th>actions</th>
             </tr>
@@ -17,6 +19,8 @@
         {% for message in messages %}
             <tr>
                 <td>{{ message.id }}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.email}}</td>
                 <td>{{ message.messages }}</td>
                 <td>
                     <a href="{{ path('messages_show', {'id': message.id}) }}">show</a>
