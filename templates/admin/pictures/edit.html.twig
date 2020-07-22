@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Pictures</h1>
 
-    {{ include('pictures/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/pictures/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('pictures_index') }}">back to list</a>
 
-    {{ include('pictures/_delete_form.html.twig') }}
+    {{ include('admin/pictures/_delete_form.html.twig') }}
 {% endblock %}

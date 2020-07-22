@@ -1,0 +1,18 @@
+//NavBar mobile view
+
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+//NavBar desktop view
+
+@media all and (min-width: 769px) {
+
+    nav {
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+    }
+}
