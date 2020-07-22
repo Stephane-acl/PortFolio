@@ -7,7 +7,33 @@
             {% for user in users %}
                 <h5 class="function">{{ user.fonction }}</h5>
             {% endfor %}
+            <a href="#search-projects" class="container-arrow">
+                <div class="arrow">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
         </div>
+
+    </div>
+    <div id="search-projects" class="container-projects">
+        <h2 class="title-project">Mes projets</h2>
+
+        <div class="container-cards">
+
+            {% for project in projects %}
+                {% for picture in project.pictures %}
+                <div class="card-project">
+                    <a href="{{ path('projects_show', {'id':project.id}) }}">
+                        <span>{{ project.name }}</span>
+                        <img src="{{ picture.name }}" alt="image du projet">
+                    </a>
+                </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+
     </div>
 
 {% endblock %}

@@ -1,6 +1,8 @@
 // Fonts
 $titlefont: 'Fira Sans', sans-serif;
 $textfont: 'Montserrat', sans-serif;
+//Color
+$primarycolor: #026df0;
 
 //NAVBAR MOBILE VIEW
 
@@ -32,6 +34,7 @@ nav {
     justify-content: center;
     height: 240px;
     align-items: center;
+    z-index: -1;
 
     .header-picture {
         display: flex;
@@ -45,10 +48,49 @@ nav {
         }
 
         img {
-            width: 130px;
-            height: 130px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
+        }
+    }
+
+    .container-arrow {
+
+        justify-content: center;
+
+        .arrow {
+
+            span {
+                display: none;
+            }
+        }
+    }
+}
+
+.container-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title-project {
+        text-align: center;
+        font-size: 1.3rem;
+        font-family: $titlefont;
+    }
+
+    .card-project {
+        margin-bottom: 20px;
+
+        img {
+            height: 270px;
+            width: 270px;
+            object-fit: cover;
+            position: relative;
+        }
+        span {
+            position: absolute;
+            z-index: 1;
         }
     }
 }
@@ -60,8 +102,9 @@ nav {
     .header {
         display: flex;
         justify-content: center;
-        height: 550px;
+        height: 944px;
         align-items: center;
+        z-index: -1;
 
         .header-picture {
             display: flex;
@@ -75,10 +118,63 @@ nav {
             }
 
             img {
-                width: 240px;
-                height: 240px;
+                width: 260px;
+                height: 260px;
                 border-radius: 50%;
                 object-fit: cover;
+            }
+        }
+
+        .container-arrow {
+            justify-content: center;
+            margin-top: 100px;
+
+            .arrow {
+                margin-top: 150px;
+
+                span {
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    border-bottom: 5px solid darkblue;
+                    border-right: 5px solid darkblue;
+                    transform: rotate(45deg);
+                    margin: -10px;
+                    animation: animate 2s infinite;
+                }
+            }
+        }
+    }
+
+    .container-projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title-project {
+            text-align: center;
+            font-size: 2rem;
+            font-family: $titlefont;
+        }
+
+        .container-cards {
+            display: flex;
+            justify-content: center;
+
+            .card-project {
+                margin: 35px 15px 15px 15px;
+
+                img {
+                    height: 400px;
+                    width: 400px;
+                    object-fit: cover;
+                    position: relative;
+                }
+
+                span {
+                    position: absolute;
+                    z-index: 1;
+                }
             }
         }
     }
