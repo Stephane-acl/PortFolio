@@ -3,11 +3,7 @@
 
 namespace App\Controller;
 
-
-use App\Entity\Pictures;
-use App\Entity\Projects;
-use App\Repository\PicturesRepository;
-use App\Repository\ProjectsRepository;
+use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,15 +17,14 @@ class AppController extends AbstractController
     /**
      * @Route("/", name="homeIndex")
      * @param UserRepository $userRepository
-     * @param PicturesRepository $picturesRepository
-     * @param ProjectsRepository $projectsRepository
+     * @param ProjectRepository $projectRepository
      * @return Response
      */
-    public function homeIndex(UserRepository $userRepository, ProjectsRepository $projectsRepository): Response
+    public function homeIndex(UserRepository $userRepository, ProjectRepository $projectRepository): Response
     {
         return $this->render('home.html.twig', [
             'users'=>$userRepository->findAll(),
-            'projects'=>$projectsRepository->findAll()
+            'projects'=>$projectRepository->findAll()
         ]);
     }
 }

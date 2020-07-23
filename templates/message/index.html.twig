@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste des Messages</h1>
+
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Messages</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for message in messages %}
+                        <tr>
+                            <td>{{ message.id }}</td>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>
+                                <a href="{{ path('message_show', {'id': message.id}) }}">Voir</a>
+                                <a href="{{ path('message_edit', {'id': message.id}) }}">Editer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('message_new') }}">Créer un nouveau message</a><br />
+    <a href="{{ path('admin_index') }}">Retour</a>
+{% endblock %}

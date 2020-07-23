@@ -3,18 +3,19 @@
 
 namespace App\Controller;
 
-use App\Entity\Clients;
-use App\Entity\Pictures;
-use App\Entity\Projects;
-use App\Entity\Technos;
-use App\Form\ClientsType;
-use App\Form\PicturesType;
-use App\Form\ProjectsType;
-use App\Form\TechnosType;
-use App\Repository\ClientsRepository;
-use App\Repository\PicturesRepository;
-use App\Repository\ProjectsRepository;
-use App\Repository\TechnosRepository;
+use App\Entity\Client;
+use App\Entity\Picture;
+use App\Entity\Project;
+use App\Entity\Techno;
+use App\Form\ClientType;
+use App\Form\PictureType;
+use App\Form\ProjectType;
+use App\Form\TechnoType;
+use App\Repository\ClientRepository;
+use App\Repository\PictureRepository;
+use App\Repository\ProjectRepository;
+use App\Repository\TechnoRepository;
+use App\Service\Slugify;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,26 +39,26 @@ class AdminController extends AbstractController
     /** CLIENTS **/
 
     /**
-     * @Route("/clients", name="clients_index", methods={"GET"})
-     * @param ClientsRepository $clientsRepository
+     * @Route("/client", name="client_index", methods={"GET"})
+     * @param ClientRepository $clientRepository
      * @return Response
      */
-    public function indexClients(ClientsRepository $clientsRepository): Response
+    public function indexClient(ClientRepository $clientRepository): Response
     {
-        return $this->render('admin/clients/index.html.twig', [
-            'clients' => $clientsRepository->findAll(),
+        return $this->render('admin/client/index.html.twig', [
+            'clients' => $clientRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/clients/new", name="clients_new", methods={"GET","POST"})
+     * @Route("/client/new", name="client_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function newClients(Request $request): Response
+    public function newClient(Request $request): Response
     {
-        $client = new Clients();
-        $form = $this->createForm(ClientsType::class, $client);
+        $client = new Client();
+        $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,47 +66,47 @@ class AdminController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('clients_index');
+            return $this->redirectToRoute('client_index');
         }
 
-        return $this->render('admin/clients/new.html.twig', [
+        return $this->render('admin/client/new.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/clients/{id}/edit", name="clients_edit", methods={"GET","POST"})
+     * @Route("/client/{id}/edit", name="client_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param Clients $client
+     * @param Client $client
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function editClients(Request $request, Clients $client): Response
+    public function editClient(Request $request, Client $client): Response
     {
-        $form = $this->createForm(ClientsType::class, $client);
+        $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('clients_index');
+            return $this->redirectToRoute('client_index');
         }
 
-        return $this->render('admin/clients/edit.html.twig', [
+        return $this->render('admin/client/edit.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/clients/{id}", name="clients_delete", methods={"DELETE"})
+     * @Route("/client/{id}", name="client_delete", methods={"DELETE"})
      * @param Request $request
-     * @param Clients $client
+     * @param Client $client
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function deleteClients(Request $request, Clients $client): Response
+    public function deleteClient(Request $request, Client $client): Response
     {
         if ($this->isCsrfTokenValid('delete'.$client->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -113,80 +114,84 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('clients_index');
+        return $this->redirectToRoute('client_index');
     }
 
     /** PROJECTS **/
 
     /**
-     * @Route("/projects", name="projects_index", methods={"GET"})
-     * @param ProjectsRepository $projectsRepository
+     * @Route("/project", name="project_index", methods={"GET"})
+     * @param ProjectRepository $projectRepository
      * @return Response
      */
-    public function indexProjects(ProjectsRepository $projectsRepository): Response
+    public function indexProject(ProjectRepository $projectRepository): Response
     {
-        return $this->render('admin/projects/index.html.twig', [
-            'projects' => $projectsRepository->findAll(),
+        return $this->render('admin/project/index.html.twig', [
+            'projects' => $projectRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/projects/new", name="projects_new")
+     * @Route("/project/new", name="project_new")
      * @param Request $request
+     * @param Slugify $slugify
      * @return Response
      */
-    public function newProjects(Request $request): Response
+    public function newProject(Request $request,  Slugify $slugify): Response
     {
-        $project = new Projects();
-        $form = $this->createForm(ProjectsType::class, $project);
+        $project = new Project();
+        $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($project->getName());
+            $project->setSlug($slug);
             $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('projects_index');
+            return $this->redirectToRoute('project_index');
         }
 
-        return $this->render('admin/projects/new.html.twig', [
+        return $this->render('admin/project/new.html.twig', [
             'project' => $project,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/projects/{id}/edit", name="projects_edit", methods={"GET","POST"})
+     * @Route("/project/{slug}/edit", name="project_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      * @param Request $request
-     * @param Projects $project
+     * @param Project $project
      * @return Response
      */
-    public function editProjects(Request $request, Projects $project): Response
+    public function editProject(Request $request, Project $project, Slugify $slugify): Response
     {
-        $form = $this->createForm(ProjectsType::class, $project);
+        $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $project->setSlug($slugify->generate($project->getName()));
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('projects_index');
+            return $this->redirectToRoute('project_index');
         }
 
-        return $this->render('admin/projects/edit.html.twig', [
+        return $this->render('admin/project/edit.html.twig', [
             'project' => $project,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("projects/{id}", name="projects_delete", methods={"DELETE"})
+     * @Route("project/{id}", name="project_delete", methods={"DELETE"})
      * @param Request $request
-     * @param Projects $project
+     * @param Project $project
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function deleteProjects(Request $request, Projects $project): Response
+    public function deleteProject(Request $request, Project $project): Response
     {
         if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -194,32 +199,32 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('projects_index');
+        return $this->redirectToRoute('project_index');
     }
 
     /** PICTURES **/
 
     /**
-     * @Route("/pictures", name="pictures_index", methods={"GET"})
-     * @param PicturesRepository $picturesRepository
+     * @Route("/picture", name="picture_index", methods={"GET"})
+     * @param PictureRepository $pictureRepository
      * @return Response
      */
-    public function indexPictures(PicturesRepository $picturesRepository): Response
+    public function indexPicture(PictureRepository $pictureRepository): Response
     {
-        return $this->render('admin/pictures/index.html.twig', [
-            'pictures' => $picturesRepository->findAll(),
+        return $this->render('admin/picture/index.html.twig', [
+            'pictures' => $pictureRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/pictures/new", name="pictures_new", methods={"GET","POST"})
+     * @Route("/picture/new", name="picture_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function newPictures(Request $request): Response
+    public function newPicture(Request $request): Response
     {
-        $picture = new Pictures();
-        $form = $this->createForm(PicturesType::class, $picture);
+        $picture = new Picture();
+        $form = $this->createForm(PictureType::class, $picture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -227,59 +232,59 @@ class AdminController extends AbstractController
             $entityManager->persist($picture);
             $entityManager->flush();
 
-            return $this->redirectToRoute('pictures_index');
+            return $this->redirectToRoute('picture_index');
         }
 
-        return $this->render('admin/pictures/new.html.twig', [
+        return $this->render('admin/picture/new.html.twig', [
             'picture' => $picture,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/pictures/{id}", name="pictures_show", methods={"GET"})
-     * @param Pictures $pictures
+     * @Route("/picture/{id}", name="picture_show", methods={"GET"})
+     * @param Picture $picture
      * @return Response
      */
-    public function showPictures(Pictures $pictures): Response
+    public function showPicture(Picture $picture): Response
     {
-        return $this->render('admin/pictures/show.html.twig', [
-            'picture' => $pictures,
+        return $this->render('admin/picture/show.html.twig', [
+            'picture' => $picture,
         ]);
     }
 
     /**
-     * @Route("/pictures/{id}/edit", name="pictures_edit", methods={"GET","POST"})
+     * @Route("/picture/{id}/edit", name="picture_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param Pictures $picture
+     * @param Picture $picture
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function editPictures(Request $request, Pictures $picture): Response
+    public function editPicture(Request $request, Picture $picture): Response
     {
-        $form = $this->createForm(PicturesType::class, $picture);
+        $form = $this->createForm(PictureType::class, $picture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('pictures_index');
+            return $this->redirectToRoute('picture_index');
         }
 
-        return $this->render('admin/pictures/edit.html.twig', [
+        return $this->render('admin/picture/edit.html.twig', [
             'picture' => $picture,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/pictures/{id}", name="pictures_delete", methods={"DELETE"})
+     * @Route("/picture/{id}", name="picture_delete", methods={"DELETE"})
      * @param Request $request
-     * @param Pictures $picture
+     * @param Picture $picture
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function deletePictures(Request $request, Pictures $picture): Response
+    public function deletePicture(Request $request, Picture $picture): Response
     {
         if ($this->isCsrfTokenValid('delete'.$picture->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -287,32 +292,32 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('pictures_index');
+        return $this->redirectToRoute('picture_index');
     }
 
     /** TECHNOS **/
 
     /**
-     * @Route("/technos", name="technos_index", methods={"GET"})
-     * @param TechnosRepository $technosRepository
+     * @Route("/techno", name="techno_index", methods={"GET"})
+     * @param TechnoRepository $technoRepository
      * @return Response
      */
-    public function indexTechnos(TechnosRepository $technosRepository): Response
+    public function indexTechno(TechnoRepository $technoRepository): Response
     {
-        return $this->render('admin/technos/index.html.twig', [
-            'technos' => $technosRepository->findAll(),
+        return $this->render('admin/techno/index.html.twig', [
+            'technos' => $technoRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/technos/new", name="technos_new", methods={"GET","POST"})
+     * @Route("/techno/new", name="techno_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function newTechnos(Request $request): Response
+    public function newTechno(Request $request): Response
     {
-        $techno = new Technos();
-        $form = $this->createForm(TechnosType::class, $techno);
+        $techno = new Techno();
+        $form = $this->createForm(TechnoType::class, $techno);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -320,47 +325,47 @@ class AdminController extends AbstractController
             $entityManager->persist($techno);
             $entityManager->flush();
 
-            return $this->redirectToRoute('technos_index');
+            return $this->redirectToRoute('techno_index');
         }
 
-        return $this->render('admin/technos/new.html.twig', [
+        return $this->render('admin/techno/new.html.twig', [
             'techno' => $techno,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/technos/{id}/edit", name="technos_edit", methods={"GET","POST"})
+     * @Route("/techno/{id}/edit", name="techno_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param Technos $techno
+     * @param Techno $techno
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function editTechnos(Request $request, Technos $techno): Response
+    public function editTechno(Request $request, Techno $techno): Response
     {
-        $form = $this->createForm(TechnosType::class, $techno);
+        $form = $this->createForm(TechnoType::class, $techno);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('technos_index');
+            return $this->redirectToRoute('techno_index');
         }
 
-        return $this->render('admin/technos/edit.html.twig', [
+        return $this->render('admin/techno/edit.html.twig', [
             'techno' => $techno,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/technos/{id}", name="technos_delete", methods={"DELETE"})
+     * @Route("/techno/{id}", name="techno_delete", methods={"DELETE"})
      * @param Request $request
-     * @param Technos $techno
+     * @param Techno $techno
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function deleteTechnos(Request $request, Technos $techno): Response
+    public function deleteTechno(Request $request, Techno $techno): Response
     {
         if ($this->isCsrfTokenValid('delete'.$techno->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -368,6 +373,6 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('technos_index');
+        return $this->redirectToRoute('techno_index');
     }
 }

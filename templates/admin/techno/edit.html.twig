@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Technos{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Editer les technos</h1>
+
+    {{ include('admin/techno/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('techno_index') }}">Retour</a>
+
+    {{ include('admin/techno/_delete_form.html.twig') }}
+{% endblock %}
