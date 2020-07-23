@@ -18,21 +18,15 @@
     </div>
     <div id="search-projects" class="container-projects">
         <h2 class="title-project">Mes projets</h2>
-
         <div class="container-cards">
-
             {% for project in projects %}
-                {% for picture in project.picture %}
                 <div class="card-project">
                     <a href="{{ path('project_show', {'id':project.id}) }}">
                         <span>{{ project.name }}</span>
-                        <img src="{{ picture.name }}" alt="image du projet">
+                        <img src="{{ project.picture[0].name }}" alt="image du projet">
                     </a>
                 </div>
             {% endfor %}
-            {% endfor %}
         </div>
-
     </div>
-
 {% endblock %}

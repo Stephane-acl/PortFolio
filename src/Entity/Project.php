@@ -59,6 +59,11 @@ class Project
      */
     private $techno;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $link;
+
     public function __construct()
     {
         $this->picture = new ArrayCollection();
@@ -173,6 +178,18 @@ class Project
             $this->techno->removeElement($techno);
             $techno->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }

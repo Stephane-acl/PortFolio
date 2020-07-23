@@ -16,8 +16,11 @@ class TechnoFixtures extends Fixture implements DependentFixtureInterface
     }
 
     const TECHNOS = [
-        "Php" => ['project_0', 'project_1'],
-        "Symfony" => ['project_1'],
+        "PHP" => ['project_0', 'project_1','project_2', 'project_3', 'project_4'],
+        "SYMFONY" => ['project_3', 'project_4'],
+        "HTML" => ['project_0', 'project_1', 'project_2', 'project_3', 'project_4'],
+        "CSS" => ['project_0', 'project_1', 'project_2', 'project_3', 'project_4'],
+        "JQUERY" => ['project_1', 'project_3', 'project_4'],
     ];
 
     public function load(ObjectManager $manager)

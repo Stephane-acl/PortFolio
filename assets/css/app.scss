@@ -166,6 +166,10 @@ nav {
         .container-cards {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
 
             .card-project {
                 margin: 35px 15px 15px 15px;
@@ -196,7 +200,7 @@ nav {
         line-height: 1.2em;
         margin-bottom: 40px;
         margin-top: 100px;
-        margin-left:0;
+        margin-left: 0;
     }
 
     .second-title {
@@ -208,6 +212,7 @@ nav {
         margin-top: 3px;
         text-transform: uppercase;
     }
+
     .project-link {
         text-decoration: none;
         font-size: 18px;
@@ -226,10 +231,74 @@ nav {
     }
 }
 
-.container-image {
-    width: 100%;
-    height: auto;
-    display: block;
+.main-project-page {
+
+    .container-image {
+        width: 100%;
+        height: auto;
+        display: block;
+
+        img {
+            border: none;
+            vertical-align: middle;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+
+    .container-technos {
+        background-color: #1400c1;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 60px;
+
+        .caption {
+            padding: 15px;
+            font-size: 14px;
+            opacity: 0.6;
+            color: #e0e0e0;
+            font-weight: 900;
+            letter-spacing: 1.3px;
+            line-height: 1.5em;
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+    }
+    .second-title {
+        color: #bcbcbc;
+        font-size: 14px;
+        font-weight: 900;
+        letter-spacing: 1.3px;
+        line-height: 1.5em;
+        margin-top: 3px;
+        text-transform: uppercase;
+    }
+}
+
+.footer-project-page {
+    height: 100px;
+    margin-top: 100px;
+}
+
+.logo-linkedin {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.logo-linkedin {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+    img {
+        height: 30px;
+    }
 }
 
 //PROJECT PAGE DESKTOP VIEW
@@ -280,10 +349,71 @@ nav {
             margin-top: 4px;
         }
     }
+    .main-project-page {
 
-    .container-image {
-        margin-left: auto;
-        margin-right: auto;
-        width: 70%;
+        .container-image {
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+
+            img {
+                border: none;
+                vertical-align: middle;
+                height: 650px;
+                object-fit: cover;
+            }
+        }
+
+        .container-technos {
+            background-color: #1400c1;
+            color: white;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 150px;
+            margin-bottom: 100px;
+
+            .caption {
+                padding: 15px;
+                font-size: 14px;
+                opacity: 0.6;
+                color: #e0e0e0;
+                font-weight: 900;
+                letter-spacing: 1.3px;
+                line-height: 1.5em;
+                margin-top: 3px;
+                text-transform: uppercase;
+            }
+        }
+        .second-title {
+            color: #bcbcbc;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 1.3px;
+            line-height: 1.5em;
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+    }
+    .footer-project-page {
+        height: 100px;
+        margin-top: 100px;
+    }
+
+    .logo-linkedin {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 20px;
+        img {
+            height: 25px;
+        }
     }
 }
+
+
+@import "~bootstrap/scss/bootstrap";

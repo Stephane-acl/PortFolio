@@ -30,6 +30,27 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
 
             'client' => 'client_0',
         ],
+
+        'SideBySide' => [
+            'description' => 'Le policier Rick Grimes se réveille après un long coma.
+             Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
+
+            'client' => 'client_0',
+        ],
+
+        'Doctopet' => [
+            'description' => 'Le policier Rick Grimes se réveille après un long coma.
+             Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
+
+            'client' => 'client_1',
+        ],
+
+        'La Gare Centrale' => [
+            'description' => 'Le policier Rick Grimes se réveille après un long coma.
+             Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
+
+            'client' => 'client_2',
+        ],
     ];
 
     public function load(ObjectManager $manager)
@@ -44,7 +65,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($project);
             $this->addReference('project_' . $i++, $project);
         }
-
         $manager->flush();
     }
 }
