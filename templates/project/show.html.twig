@@ -3,27 +3,30 @@
 {% block title %}Projects{% endblock %}
 
 {% block body %}
-    <h1>Projects</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ project.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ project.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ project.description }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ project.date ? project.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="header-project-page">
+        <div class="container">
+            <div class="row">
+                <div class="ol-md-8 col-md-offset-2 col-sm-9 col-sm-offset-3 col-xs-12 project-padding">
+                    <h1 class="main-title text-center">{{ project.name }}</h1>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-12">
+                    <h2 class="second-title">Le projet</h2>
+                    <span class="second-title">{{ project.date ? project.date|date('d-m-Y') }}</span>
+                </div>
+                <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
+                    <p>{{ project.description }}</p>
+                    <a href="#" class="project-link" target="_blank">Voir le projet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-image">
+        {% for picture in project.picture %}
+            <img src="{{ picture.name }}" class="d-block w-100" alt="...">
+        {% endfor %}
+    </div>
 {% endblock %}

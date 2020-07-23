@@ -39,8 +39,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $project = new Project();
             $project->setName($title);
             $project->setDescription($data['description']);
-            $project->setDate(new DateTime('2020-03-10'));
-            $project->setClients($this->getReference($data['client']));
+            $project->setDate(new DateTime('10-03-2020'));
+            $project->setClient($this->getReference($data['client']));
             $manager->persist($project);
             $this->addReference('project_' . $i++, $project);
         }

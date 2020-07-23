@@ -17,7 +17,7 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
     }
 
     const PICTURES = [
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWYZQVxWgKr3bOoF95W_8mMMfeHhYR4mvVoQ&usqp=CAU' => [
+        '/img/retro.png' => [
             'project' => 'project_0',
         ],
         'https://static.boredpanda.com/blog/wp-content/uuuploads/funny-zoo-animal-portraits-yago-partal/funny-zoo-animal-portraits-yago-partal-4.jpg' => [
@@ -30,7 +30,7 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::PICTURES as $name => $data) {
             $picture = new Picture();
             $picture->setName($name);
-            $picture->setProjects($this->getReference($data['project']));
+            $picture->setProject($this->getReference($data['project']));
             $manager->persist($picture);
         }
         $manager->flush();

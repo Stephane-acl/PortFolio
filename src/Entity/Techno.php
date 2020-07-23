@@ -30,11 +30,11 @@ class Techno
     /**
      * @ORM\ManyToMany(targetEntity=Project::class, inversedBy="techno")
      */
-    private $projects;
+    private $project;
 
     public function __construct()
     {
-        $this->projects = new ArrayCollection();
+        $this->project = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,15 +57,15 @@ class Techno
     /**
      * @return Collection|Project[]
      */
-    public function getProjects(): Collection
+    public function getProject(): Collection
     {
-        return $this->projects;
+        return $this->project;
     }
 
     public function addProject(Project $project): self
     {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
+        if (!$this->project->contains($project)) {
+            $this->project[] = $project;
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Techno
 
     public function removeProject(Project $project): self
     {
-        if ($this->projects->contains($project)) {
-            $this->projects->removeElement($project);
+        if ($this->project->contains($project)) {
+            $this->project->removeElement($project);
         }
 
         return $this;
