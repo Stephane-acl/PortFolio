@@ -3,7 +3,8 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Projects;
+use App\Entity\Project;
+use DateTime;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -21,21 +22,29 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             'description' => 'Le policier Rick Grimes se réveille après un long coma.
              Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
 
-            'client' => 'clients_0',
+            'client' => 'client_0',
+        ],
+        'Adventure Couch' => [
+            'description' => 'Le policier Rick Grimes se réveille après un long coma.
+             Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
+
+            'client' => 'client_0',
         ],
     ];
 
     public function load(ObjectManager $manager)
     {
+        $i = 0;
         foreach (self::PROJECTS as $title => $data) {
-            $project = new Projects();
-            $project ->setName($title);
-            $project ->setDescription($data['description']);
-            $project ->setDate(new \DateTime());
+            $project = new Project();
+            $project->setName($title);
+            $project->setDescription($data['description']);
+            $project->setDate(new DateTime('2020-03-10'));
             $project->setClients($this->getReference($data['client']));
-            $manager->persist($project );
-
+            $manager->persist($project);
+            $this->addReference('project_' . $i++, $project);
         }
+
         $manager->flush();
     }
 }

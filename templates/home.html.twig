@@ -23,9 +23,9 @@
         <div class="container-cards">
 
             {% for project in projects %}
-                {% for picture in project.pictures %}
+                {% for picture in project.picture %}
                 <div class="card-project">
-                    <a href="{{ path('projects_show', {'id':project.id}) }}">
+                    <a href="{{ path('project_show', {'id':project.id}) }}">
                         <span>{{ project.name }}</span>
                         <img src="{{ picture.name }}" alt="image du projet">
                     </a>
