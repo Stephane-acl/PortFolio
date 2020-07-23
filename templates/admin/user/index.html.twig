@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste admin</h1>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Role</th>
+                        <th>Mot de passe</th>
+                        <th>Photo</th>
+                        <th>Linkedin</th>
+                        <th>Fonction</th>
+                        <th>action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.picture }}</td>
+                            <td>{{ user.linkedin }}</td>
+                            <td>{{ user.fonction }}</td>
+                            <td>
+                                <a href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+    <a href="{{ path('admin_index') }}">Retour</a>
+{% endblock %}

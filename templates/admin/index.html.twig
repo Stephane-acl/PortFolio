@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Administration</h1>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <ul>
+                <li><a href="{{ path('client_index') }}">Gestion des clients</a></li>
+                <li><a href="{{ path('picture_index') }}">Gestion des photos</a></li>
+                <li><a href="{{ path('project_index') }}">Gestion des projets</a></li>
+                <li><a href="{{ path('techno_index') }}">Gestion des technos</a></li>
+                <li><a href="{{ path('user_index') }}">Gestion de mon profil</a></li>
+                <li><a href="{{ path('message_index') }}">Gestion des messages</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

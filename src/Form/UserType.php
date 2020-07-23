@@ -13,7 +13,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
+            ->add('username', null,['label'=>'Nom', 'empty_data' => ''])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
@@ -21,10 +21,10 @@ class UserType extends AbstractType
                 ],
                 'label' => "Role *"
             ])
-            ->add('password')
-            ->add('picture')
-            ->add('linkedin')
-            ->add('fonction')
+            ->add('password', null, ['label'=>'Mot de passe', 'empty_data' => ''])
+            ->add('picture',null,['label'=>'Photo', 'empty_data' => ''])
+            ->add('linkedin',null, ['label'=>'Linkedin', 'empty_data' => ''])
+            ->add('fonction', null, ['label'=>'Fonction', 'empty_data' => ''])
         ;
     }
 

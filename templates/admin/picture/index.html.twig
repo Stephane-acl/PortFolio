@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pictures index{% endblock %}
+
+{% block body %}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <h1 class="text-center">Liste des Photos</h1>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for picture in pictures %}
+                        <tr>
+                            <td>{{ picture.id }}</td>
+                            <td>{{ picture.name }}</td>
+                            <td>
+                                <a href="{{ path('picture_show', {'id': picture.id}) }}">Voir</a>
+                                <a href="{{ path('picture_edit', {'id': picture.id}) }}">Editer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('picture_new') }}">Créer une nouvelle photo</a><br />
+    <a href="{{ path('admin_index') }}">Retour</a>
+{% endblock %}

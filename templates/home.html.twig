@@ -1,5 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Bienvenue !</h1>
+
+    <div class="header">
+        <div class="header-picture">
+            {% for user in users %}
+            <img src="{{ user.picture }}" alt="image de profile">
+                <h5 class="function">{{ user.fonction }}</h5>
+            {% endfor %}
+            <a href="#search-projects" class="container-arrow">
+                <div class="arrow">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="search-projects" class="container-projects">
+        <h2 class="title-project">Mes projets</h2>
+        <div class="container-cards">
+            {% for project in projects %}
+                <div class="card-project zoom">
+                    <a href="{{ path('project_show', {'slug':project.slug}) }}">
+                        <span>{{ project.name }}</span>
+                        <div class="effect"><img src="{{ project.picture[0].name }}" alt="image du projet">
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

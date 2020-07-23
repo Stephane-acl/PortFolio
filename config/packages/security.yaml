@@ -37,14 +37,14 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/projects/new, roles: ROLE_ADMIN }
-         - { path: ^/projects, roles: ROLE_ADMIN }
-         - { path: ^/clients, roles: ROLE_ADMIN }
-         - { path: ^/clients/new, roles: ROLE_ADMIN }
-         - { path: ^/pictures, roles: ROLE_ADMIN }
-         - { path: ^/pictures/new, roles: ROLE_ADMIN }
-         - { path: ^/technos, roles: ROLE_ADMIN }
-         - { path: ^/technos/new, roles: ROLE_ADMIN }
+         - { path: ^/admin/project/new, roles: ROLE_ADMIN }
+         - { path: ^/admin/project, roles: ROLE_ADMIN }
+         - { path: ^/admin/client, roles: ROLE_ADMIN }
+         - { path: ^/admin/client/new, roles: ROLE_ADMIN }
+         - { path: ^/admin/picture, roles: ROLE_ADMIN }
+         - { path: ^/admin/picture/new, roles: ROLE_ADMIN }
+         - { path: ^/admin/techno, roles: ROLE_ADMIN }
+         - { path: ^/admin/techno/new, roles: ROLE_ADMIN }
          - { path: ^/user, roles: ROLE_ADMIN }
          - { path: ^/user/new, roles: ROLE_ADMIN }
-
+         - { path: ^/admin, roles: ROLE_ADMIN }
