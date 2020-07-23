@@ -28,7 +28,11 @@ class Clients
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Projects::class, mappedBy="clients")
+     * @ORM\OneToMany(targetEntity=Projects::class,
+     *     mappedBy="clients",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
      */
     private $projects;
 

@@ -39,7 +39,12 @@ class Projects
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=Pictures::class, mappedBy="projects")
+     * @ORM\OneToMany(
+     *     targetEntity=Pictures::class,
+     *     mappedBy="projects",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
      */
     private $pictures;
 
