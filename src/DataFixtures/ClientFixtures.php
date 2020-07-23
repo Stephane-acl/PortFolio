@@ -10,7 +10,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 class ClientFixtures extends Fixture
 {
     const CLIENTS = [
-        'Wild Code School',
+        'La Wild Code School',
         'Doctolib',
         'The Greener Good',
     ];

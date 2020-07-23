@@ -91,7 +91,7 @@ nav {
             width: 270px;
             object-fit: cover;
             position: relative;
-            border: 1px solid black;
+            border: 1px solid lightgray;
         }
 
         span {
@@ -123,6 +123,7 @@ nav {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: -200px;
 
             .function {
                 font-family: $textfont;
@@ -139,11 +140,37 @@ nav {
         }
 
         .container-arrow {
-            justify-content: center;
-            margin-top: 100px;
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 30px;
+
+            a.container-arrow {
+                justify-content: center;
+            }
+
+            .arrow span:nth-child(2){
+                animation-delay: -0.2s;
+            }
+            .arrow span:nth-child(3){
+                animation-delay: -0.4s;
+            }
+            @keyframes animate {
+                0%{
+                    opacity: 0;
+                    transform: rotate(45deg) translate(-20px,-20px);
+                }
+                50%{
+                    opacity: 1;
+                }
+                100%{
+                    opacity: 0;
+                    transform: rotate(45deg) translate(20px,20px);
+                }
+            }
 
             .arrow {
                 margin-top: 150px;
+                transform: translate(-50%,-50%);
 
                 span {
                     display: block;
@@ -178,6 +205,17 @@ nav {
             margin-right: auto;
             width: 75%;
 
+            .zoom .effect img {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+            }
+            .zoom .effect:hover img {
+                -webkit-transform: scale(1.03);
+                transform: scale(1.03);
+            }
+
             .card-project {
                 margin: 35px 15px 15px 15px;
 
@@ -186,7 +224,7 @@ nav {
                     width: 400px;
                     object-fit: cover;
                     position: relative;
-                    border: 1px solid black;
+                    border: 1px solid lightgray;
                 }
 
                 span {
@@ -254,10 +292,10 @@ nav {
         display: block;
 
         img {
-            border: none;
             vertical-align: middle;
             height: 300px;
             object-fit: cover;
+            border: 1px solid lightgray;
         }
     }
 
@@ -290,7 +328,7 @@ nav {
         font-weight: 900;
         letter-spacing: 1.3px;
         line-height: 1.5em;
-        margin-top: 3px;
+        margin-top: 15px;
         text-transform: uppercase;
     }
 }
@@ -374,10 +412,10 @@ nav {
             width: 70%;
 
             img {
-                border: none;
                 vertical-align: middle;
                 height: 650px;
                 object-fit: cover;
+                border: 1px solid lightgray;
             }
         }
 
@@ -413,8 +451,8 @@ nav {
             font-weight: 900;
             letter-spacing: 1.3px;
             line-height: 1.5em;
-            margin-top: 3px;
             text-transform: uppercase;
+            margin-top: 15px;
         }
     }
     .footer-project-page {
@@ -433,6 +471,5 @@ nav {
         }
     }
 }
-
 
 @import "~bootstrap/scss/bootstrap";

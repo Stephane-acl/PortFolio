@@ -24,6 +24,7 @@ class UserFixtures extends Fixture
         $admin->setLinkedin('https://www.linkedin.com/feed/');
         $admin->setFonction('Développeur Web');
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPicture('/img/steph.jpg');
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
             'adminpassword'

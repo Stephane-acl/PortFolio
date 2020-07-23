@@ -35,9 +35,6 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
         '/img/side.png' => [
             'project' => 'project_2',
         ],
-        '/img/side1.png' => [
-            'project' => 'project_2',
-        ],
         '/img/side2.png' => [
             'project' => 'project_2',
         ],

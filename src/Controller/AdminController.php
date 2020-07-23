@@ -160,18 +160,19 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/project/{id}/edit", name="project_edit", methods={"GET","POST"})
+     * @Route("/project/{slug}/edit", name="project_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @param Project $project
      * @return Response
      */
-    public function editProject(Request $request, Project $project): Response
+    public function editProject(Request $request, Project $project, Slugify $slugify): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $project->setSlug($slugify->generate($project->getName()));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('project_index');

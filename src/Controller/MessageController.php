@@ -44,8 +44,12 @@ class MessageController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
+            $this->addFlash(
+                'success',
+                'Votre message message à bien été envoyé !'
+            );
 
-            return $this->redirectToRoute('message_index');
+            return $this->redirectToRoute('message_new');
         }
 
         return $this->render('message/new.html.twig', [

@@ -3,8 +3,7 @@
 {% block title %}New Messages{% endblock %}
 
 {% block body %}
-    <h1>Create new Messages</h1>
-
-    {{ include('message/_form.html.twig') }}
-
+    <h1 class="text-center">Contact</h1>
+                {{ include('message/_form.html.twig') }}
+                <a href="{{ path('app_homeIndex') }}">Retour</a>
 {% endblock %}

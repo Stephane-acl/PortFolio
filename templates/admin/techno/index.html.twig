@@ -3,32 +3,38 @@
 {% block title %}Technos index{% endblock %}
 
 {% block body %}
-    <h1>Technos index</h1>
+    <h1 class="text-center">Liste des Technos</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for techno in technos %}
-            <tr>
-                <td>{{ techno.id }}</td>
-                <td>{{ techno.name }}</td>
-                <td>
-                    <a href="{{ path('techno_edit', {'id': techno.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('techno_new') }}">Create new</a>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for techno in technos %}
+                        <tr>
+                            <td>{{ techno.id }}</td>
+                            <td>{{ techno.name }}</td>
+                            <td>
+                                <a href="{{ path('techno_edit', {'id': techno.id}) }}">Editer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('techno_new') }}">Créer une nouvelle techno</a><br />
+    <a href="{{ path('admin_index') }}">Retour</a>
 {% endblock %}

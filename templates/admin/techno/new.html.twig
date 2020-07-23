@@ -3,9 +3,9 @@
 {% block title %}New Technos{% endblock %}
 
 {% block body %}
-    <h1>Create new Technos</h1>
+    <h1 class="text-center">Créer une nouvelle Techno</h1>
 
     {{ include('admin/techno/_form.html.twig') }}
 
-    <a href="{{ path('techno_index') }}">back to list</a>
+    <a href="{{ path('techno_index') }}">Retour</a>
 {% endblock %}

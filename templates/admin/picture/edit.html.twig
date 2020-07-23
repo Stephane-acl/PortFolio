@@ -3,11 +3,11 @@
 {% block title %}Edit Pictures{% endblock %}
 
 {% block body %}
-    <h1>Edit Pictures</h1>
+    <h1 class="text-center">Editer les Photos</h1>
 
-    {{ include('admin/picture/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/picture/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('picture_index') }}">back to list</a>
+    <a href="{{ path('picture_index') }}">Retour</a>
 
     {{ include('admin/picture/_delete_form.html.twig') }}
 {% endblock %}

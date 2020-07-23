@@ -3,11 +3,11 @@
 {% block title %}Edit Projects{% endblock %}
 
 {% block body %}
-    <h1>Edit Projects</h1>
+    <h1 class="text-center">Editer le Projet</h1>
 
-    {{ include('admin/project/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/project/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('project_index') }}">back to list</a>
+    <a href="{{ path('project_index') }}">Retour</a>
 
     {{ include('admin/project/_delete_form.html.twig') }}
 {% endblock %}

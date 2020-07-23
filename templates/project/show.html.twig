@@ -55,28 +55,17 @@
             {% for techno in project.techno %}
                 {{ techno.name }} /
             {% endfor %}
+            <h2 class="second-title">Le Client</h2>
+            {{ project.client.name }}
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-12">
-                    <h2 class="second-title">Le Client</h2>
-                </div>
-                <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
-                    {% for client in project.client %}
-                        <p>Grâce à la {{ dump(client) }}</p>
-                    {% endfor %}
-                </div>
             </div>
-        </div>
-    </div>
     <div class="footer-project-page">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{{ path('project_show', {'slug':project.slug}) }}">Précédent</a>
+            <a class="navbar-brand" href="{{ path('project_show', {'slug':'sidebyside'}) }}">Précédent</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"></ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <a class="navbar-brand" href="{{ path('project_show', {'slug':project.slug}) }}"
-                       target="_blank">Suivant</a>
+                    <a class="navbar-brand" href="{{ path('project_show', {'slug':'retro-invaders'}) }}">Suivant</a>
                 </div>
             </div>
         </nav>
