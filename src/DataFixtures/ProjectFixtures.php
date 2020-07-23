@@ -4,6 +4,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Project;
+use App\Service\Slugify;
 use DateTime;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -55,6 +56,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+        $slugify = new Slugify();
         $i = 0;
         foreach (self::PROJECTS as $title => $data) {
             $project = new Project();
@@ -62,6 +64,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $project->setDescription($data['description']);
             $project->setDate(new DateTime('10-03-2020'));
             $project->setClient($this->getReference($data['client']));
+            $slug = $slugify->generate($project->getName());
+            $project->setSlug($slug);
             $manager->persist($project);
             $this->addReference('project_' . $i++, $project);
         }

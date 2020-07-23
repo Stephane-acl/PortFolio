@@ -20,16 +20,64 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
         '/img/retro.png' => [
             'project' => 'project_0',
         ],
-        'https://static.boredpanda.com/blog/wp-content/uuuploads/funny-zoo-animal-portraits-yago-partal/funny-zoo-animal-portraits-yago-partal-4.jpg' => [
+        '/img/retro-card.png' => [
+            'project' => 'project_0',
+        ],
+        '/img/retro-game.png' => [
+            'project' => 'project_0',
+        ],
+        '/img/adventure.png' => [
             'project' => 'project_1',
         ],
-        'https://blog.grainedephotographe.com/wp-content/uploads/2013/10/Yago-Partal-photographe-10.jpg' => [
+        '/img/adventure-couch.png' => [
+            'project' => 'project_1',
+        ],
+        '/img/side.png' => [
             'project' => 'project_2',
         ],
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJHGFvdNf8RSRRl4pIIa464ugdHIbPbLiElg&usqp=CAU' => [
+        '/img/side1.png' => [
+            'project' => 'project_2',
+        ],
+        '/img/side2.png' => [
+            'project' => 'project_2',
+        ],
+        '/img/side3.png' => [
+            'project' => 'project_2',
+        ],
+        '/img/side4.png' => [
+            'project' => 'project_2',
+        ],
+        '/img/doc.png' => [
             'project' => 'project_3',
         ],
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTr-io7cRwc0YRZThwxoLRYR6oU1qtXqTwvVQ&usqp=CAU' => [
+        '/img/doc1.png' => [
+            'project' => 'project_3',
+        ],
+        '/img/doc2.png' => [
+            'project' => 'project_3',
+        ],
+        '/img/greenerGood/green.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green2.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green3.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green4.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green5.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green6.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green7.png' => [
+            'project' => 'project_4',
+        ],
+        '/img/greenerGood/green8.png' => [
             'project' => 'project_4',
         ],
     ];

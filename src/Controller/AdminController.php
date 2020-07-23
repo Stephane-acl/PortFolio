@@ -15,6 +15,7 @@ use App\Repository\ClientRepository;
 use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnoRepository;
+use App\Service\Slugify;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -133,9 +134,10 @@ class AdminController extends AbstractController
     /**
      * @Route("/project/new", name="project_new")
      * @param Request $request
+     * @param Slugify $slugify
      * @return Response
      */
-    public function newProject(Request $request): Response
+    public function newProject(Request $request,  Slugify $slugify): Response
     {
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
@@ -143,6 +145,8 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($project->getName());
+            $project->setSlug($slug);
             $entityManager->persist($project);
             $entityManager->flush();
 

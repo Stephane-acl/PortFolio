@@ -91,12 +91,19 @@ nav {
             width: 270px;
             object-fit: cover;
             position: relative;
+            border: 1px solid black;
         }
 
         span {
             position: absolute;
             z-index: 1;
-            color: $primarycolor;
+            background-color: $primarycolor;
+            font-family: $titlefont;
+            color: white;
+            padding: 10px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-shadow: 0 2px 5px grey;
         }
     }
 }
@@ -179,11 +186,19 @@ nav {
                     width: 400px;
                     object-fit: cover;
                     position: relative;
+                    border: 1px solid black;
                 }
 
                 span {
                     position: absolute;
                     z-index: 1;
+                    background-color: $primarycolor;
+                    font-family: $titlefont;
+                    color: white;
+                    padding: 10px;
+                    border-bottom-left-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    box-shadow: 0 2px 5px grey;
                 }
             }
         }
@@ -268,6 +283,7 @@ nav {
             text-transform: uppercase;
         }
     }
+
     .second-title {
         color: #bcbcbc;
         font-size: 14px;
@@ -296,6 +312,7 @@ nav {
     justify-content: center;
     flex-direction: row;
     margin-bottom: 20px;
+
     img {
         height: 30px;
     }
@@ -389,6 +406,7 @@ nav {
                 text-transform: uppercase;
             }
         }
+
         .second-title {
             color: #bcbcbc;
             font-size: 14px;
@@ -409,6 +427,7 @@ nav {
         justify-content: center;
         flex-direction: row;
         margin-bottom: 20px;
+
         img {
             height: 25px;
         }

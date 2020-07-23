@@ -71,11 +71,11 @@
     </div>
     <div class="footer-project-page">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{{ path('project_show', {id:project.id}) }}">Précédent</a>
+            <a class="navbar-brand" href="{{ path('project_show', {'slug':project.slug}) }}">Précédent</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"></ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <a class="navbar-brand" href="{{ path('project_show', {id:project.id}) }}"
+                    <a class="navbar-brand" href="{{ path('project_show', {'slug':project.slug}) }}"
                        target="_blank">Suivant</a>
                 </div>
             </div>
