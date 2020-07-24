@@ -6,9 +6,12 @@ use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -32,9 +35,11 @@ class MessageController extends AbstractController
     /**
      * @Route("/new", name="message_new", methods={"GET","POST"})
      * @param Request $request
+     * @param MailerInterface $mailer
      * @return Response
+     * @throws TransportExceptionInterface
      */
-    public function new(Request $request): Response
+    public function new(Request $request,  MailerInterface $mailer): Response
     {
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
@@ -44,6 +49,15 @@ class MessageController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+                ->from($this->getParameter('mailer_from'))
+                ->to('stephane.acloque1@gmail.com')
+                ->subject('Nouveau message')
+                ->htmlTemplate('message/email/notification.html.twig')
+                ->context(['message'=>$message]);
+            $mailer->send($email);
+
             $this->addFlash(
                 'success',
                 'Votre message message à bien été envoyé !'
