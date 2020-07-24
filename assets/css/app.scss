@@ -4,6 +4,10 @@ $textfont: 'Montserrat', sans-serif;
 //Color
 $primarycolor: #1400c1;
 
+html {
+    scroll-behavior: smooth;
+}
+
 //NAVBAR MOBILE VIEW
 
 nav {
