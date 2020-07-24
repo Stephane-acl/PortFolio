@@ -76,7 +76,7 @@
                 {% set slugNext = projects[loop.index0 +1].slug %}
             {% endif %}
             <a class="navbar-brand" href="{{ path('project_show', {'slug':slugPrev }) }}">Précédent</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-collapse footer" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"></ul>
                 <div class="form-inline my-2 my-lg-0">
                     <a class="navbar-brand" href="{{ path('project_show', {'slug':slugNext}) }}">Suivant</a>
