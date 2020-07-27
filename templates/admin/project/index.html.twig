@@ -3,42 +3,56 @@
 {% block title %}Projects index{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Liste des Projets</h1>
-    <div class="container h-100">
-        <div class="row h-100 justify-content-center align-items-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for project in projects %}
-                        <tr>
-                            <td>{{ project.id }}</td>
-                            <td>{{ project.name }}</td>
-                            <td>{{ project.description }}</td>
-                            <td>{{ project.date ? project.date|date('Y-m-d') }}</td>
-                            <td>
-                                <a href="{{ path('project_show', {'slug': project.slug}) }}">Voir</a>
-                                <a href="{{ path('project_edit', {'slug': project.slug}) }}">Editer</a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="5">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+
+    <h1 class="text-center title-admin">Administration</h1>
+    <main class="index-admin">
+        <div class="links-container">
+            <img src="{{ asset('img/gear.svg') }}" alt="Settings">
+            <ul>
+                <li><a href="{{ path('client_index') }}">Gérer les clients</a></li>
+                <li><a href="{{ path('picture_index') }}">Gérer les photos</a></li>
+                <li><a href="{{ path('techno_index') }}">Gérer les technos</a></li>
+                <li><a href="{{ path('user_index') }}">Gérer mon profil</a></li>
+                <li><a href="{{ path('message_index') }}">Gérer mes messages</a></li>
+            </ul>
+            <div class="admin-btn-menu">
+                <a href="{{ path('project_new') }}">Nouveau projet</a><br/>
+                <a href="{{ path('app_homeIndex') }}">Retour</a>
             </div>
         </div>
-    </div>
-    <a href="{{ path('project_new') }}">Créer un nouveau projet</a><br />
-    <a href="{{ path('admin_index') }}">Retour</a>
+
+        <table class="table table-project">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description des projets</th>
+                <th>Date</th>
+                <th>Photos</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for project in projects %}
+                <tr>
+                    <td class="id-project">{{ project.id }}</td>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.date ? project.date|date('Y-m-d') }}</td>
+                    <td>
+                        <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="{{ project.name }}"height="130px">
+                    </td>
+                    <td class="container-btn">
+                        <button class="btn-see"><a href="{{ path('project_show', {'slug': project.slug}) }}">Voir</a></button>
+                        <button class="btn-edit"><a href="{{ path('project_edit', {'slug': project.slug}) }}">Editer</a></button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
 {% endblock %}
