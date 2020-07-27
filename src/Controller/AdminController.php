@@ -268,6 +268,11 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            // Set the pictureFile property to null to avoid serialization error
+            $picture->setPictureFile(null);
+
+            $this->addFlash('success', "Votre photo a été modifié avec succès");
+
             return $this->redirectToRoute('picture_index');
         }
 
