@@ -17,64 +17,64 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
     }
 
     const PICTURES = [
-        '/img/retro.png' => [
+        'retro.png' => [
             'project' => 'project_0',
         ],
-        '/img/retro-card.png' => [
+        'retro-card.png' => [
             'project' => 'project_0',
         ],
-        '/img/retro-game.png' => [
+        'retro-game.png' => [
             'project' => 'project_0',
         ],
-        '/img/adventure.png' => [
+        'adventure.png' => [
             'project' => 'project_1',
         ],
-        '/img/adventure-couch.png' => [
+        'adventure-couch.png' => [
             'project' => 'project_1',
         ],
-        '/img/side.png' => [
+        'side.png' => [
             'project' => 'project_2',
         ],
-        '/img/side2.png' => [
+        'side2.png' => [
             'project' => 'project_2',
         ],
-        '/img/side3.png' => [
+        'side3.png' => [
             'project' => 'project_2',
         ],
-        '/img/side4.png' => [
+        'side4.png' => [
             'project' => 'project_2',
         ],
-        '/img/doc.png' => [
+        'doc.png' => [
             'project' => 'project_3',
         ],
-        '/img/doc1.png' => [
+        'doc1.png' => [
             'project' => 'project_3',
         ],
-        '/img/doc2.png' => [
+        'doc2.png' => [
             'project' => 'project_3',
         ],
-        '/img/greenerGood/green.png' => [
+        'green.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green2.png' => [
+        'green2.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green3.png' => [
+        'green3.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green4.png' => [
+        'green4.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green5.png' => [
+        'green5.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green6.png' => [
+        'green6.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green7.png' => [
+        'green7.png' => [
             'project' => 'project_4',
         ],
-        '/img/greenerGood/green8.png' => [
+        'green8.png' => [
             'project' => 'project_4',
         ],
     ];
