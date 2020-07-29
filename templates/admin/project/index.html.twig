@@ -40,7 +40,9 @@
                     <td>{{ project.description }}</td>
                     <td>{{ project.date ? project.date|date('Y-m-d') }}</td>
                     <td>
-                        <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="{{ project.name }}"height="130px">
+                       {% if project.picture[0] is defined %}
+                           <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="{{ project.name }}"height="130px">
+                       {% endif %}
                     </td>
                     <td class="container-btn">
                         <button class="btn-see"><a href="{{ path('project_show', {'slug': project.slug}) }}">Voir</a></button>

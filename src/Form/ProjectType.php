@@ -27,7 +27,6 @@ class ProjectType extends AbstractType
                 'label' => 'Techno\'s',
             ])
             ->add('link', null, ['label' => 'Lien vers le projet', 'empty_data'=> ''])
-            ->add('slug', null, ['label' => 'Slug', 'empty_data'=> ''])
         ;
     }
 
