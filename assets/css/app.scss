@@ -412,7 +412,7 @@ nav {
     .container-technos {
         background-color: #1400c1;
         color: white;
-        padding: 15px;
+        padding: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -421,7 +421,7 @@ nav {
 
         .caption {
             padding: 15px;
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.6;
             color: #e0e0e0;
             font-weight: 900;
@@ -430,11 +430,15 @@ nav {
             margin-top: 3px;
             text-transform: uppercase;
         }
+
+        span {
+            font-size: 12px;
+        }
     }
 
     .second-title {
         color: #bcbcbc;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 900;
         letter-spacing: 1.3px;
         line-height: 1.5em;
@@ -559,6 +563,10 @@ nav {
                 margin-top: 3px;
                 text-transform: uppercase;
             }
+
+            span {
+                font-size: 15px;
+            }
         }
 
         .second-title {
@@ -667,11 +675,8 @@ nav {
                 padding: 5px 15px 5px 15px;
                 margin-bottom: 15px;
                 width: 100%;
-
-                a {
-                    color: $primarycolor;
-                    text-decoration: none;
-                }
+                color: $primarycolor;
+                text-align: center;
             }
 
             .btn-see:hover {
@@ -679,11 +684,8 @@ nav {
                 border: 1px solid $primarycolor;
                 border-radius: 5px;
                 padding: 5px 15px 5px 15px;
-
-                a {
-                    color: white;
-                    text-decoration: none;
-                }
+                color: white;
+                text-decoration: none;
             }
 
             .btn-edit {
@@ -692,11 +694,9 @@ nav {
                 border-radius: 5px;
                 padding: 5px 15px 5px 15px;
                 width: 100%;
-
-                a {
-                    color: white;
-                    text-decoration: none;
-                }
+                color: white;
+                text-decoration: none;
+                text-align: center;
             }
 
             .btn-edit:hover {
@@ -704,11 +704,8 @@ nav {
                 border: 1px solid $primarycolor;
                 border-radius: 5px;
                 padding: 5px 15px 5px 15px;
-
-                a {
-                    color: $primarycolor;
-                    text-decoration: none;
-                }
+                color: $primarycolor;
+                text-decoration: none;
             }
         }
     }
@@ -837,6 +834,35 @@ nav {
                 }
             }
         }
+    }
+}
+
+//ADMIN TAB MOBILE VIEW
+
+@media screen and (max-width: 769px) {
+    table {
+        display:flex;
+    }
+    thead {
+        width:20%;
+        min-width:90px;
+    }
+    tbody {
+        flex:1;
+    }
+    tr {
+        display:flex;
+        flex-direction:column;
+    }
+    th, td {
+        text-align:left;
+        border-right:0;
+        border-bottom:1px solid black;
+    }
+}
+@media screen and (max-width:461px) {
+    tbody tr:not(:first-child) td::before {
+        margin-left:-95px;
     }
 }
 

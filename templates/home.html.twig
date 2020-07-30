@@ -22,7 +22,11 @@
         <div class="container-cards">
             {% for project in projects %}
                 <div class="card-project zoom effect">
-                    <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="image du projet"/>
+                    {% if project.picture[0] is not defined %}
+                        <img src=" {{ asset('img/paper.jpeg') }}" alt="Image papier et stylo">
+                    {% else %}
+                        <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="image du projet"/>
+                    {% endif %}
                     <a class="button button-on-hover" href="{{ path('project_show', {'slug':project.slug}) }}">
                         {{ project.name }}
                     </a>

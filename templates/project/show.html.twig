@@ -7,7 +7,7 @@
     <div class="header-project-page">
         <div class="container">
             <div class="row">
-                <div class="ol-md-8 col-md-offset-2 col-sm-9 col-sm-offset-3 col-xs-12 project-padding">
+                <div class="col-md-8 col-md-offset-2 col-sm-9 col-sm-offset-3 col-xs-12 project-padding">
                     <h1 class="main-title text-center">{{ project.name }}</h1>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
                             <img class="d-block w-100"
                                  src="{{ vich_uploader_asset(picture, 'pictureFile') }}"
-                                 alt="{{ project.name }}">
+                                 alt="{{ project.name }}"/>
                         </div>
                     {% endfor %}
                 </div>
@@ -55,11 +55,14 @@
             <div class="caption">
                 Technologies utilisées
             </div>
+                <span>
             {% for techno in project.techno %}
                 {{ techno.name }} /
             {% endfor %}
+                </span>
             <h2 class="second-title">Le Client</h2>
-            {{ project.client.name }}
+            <span>{{ project.client.name }}</span>
+
         </div>
     </div>
     <div class="footer-project-page">
