@@ -866,6 +866,45 @@ nav {
         margin-left:-95px;
     }
 }
+//CONTACT FORM MOBILE VIEW
 
+.message {
+    background-color: #f2f2f2;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border-radius: 25px;
+
+    h1 {
+        margin: 15px 0 35px 0;
+    }
+
+    form {
+        margin: 10px;
+    }
+}
+
+//CONTACT FORM DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    .message {
+        background-color: #f2f2f2;
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        border-radius: 25px;
+
+        h1 {
+            margin: 15px 0 35px 0;
+        }
+
+        form {
+            margin: 10px;
+        }
+    }
+}
 
 @import "~bootstrap/scss/bootstrap";

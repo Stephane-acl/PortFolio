@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -44,6 +48,12 @@ class User implements UserInterface
     private $picture;
 
     /**
+     * @Vich\UploadableField(mapping="user_file", fileNameProperty="picture")
+     * @var File | null
+     */
+    private $userFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(max="255", allowEmptyString="false", maxMessage="Ce champ est trop long")
      * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
@@ -56,6 +66,11 @@ class User implements UserInterface
      * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $fonction;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updateAt;
 
     public function getId(): ?int
     {
@@ -162,6 +177,32 @@ class User implements UserInterface
     public function setFonction(string $fonction): self
     {
         $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    public function setUserFile(File $image = null): User
+    {
+        $this->userFile = $image;
+        if ($image) {
+            $this->updateAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUserFile(): ?File
+    {
+        return $this->userFile;
+    }
+
+    public function getUpdateAt(): ?\DateTime
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(?\DateTime $updateAt): self
+    {
+        $this->updateAt = $updateAt;
 
         return $this;
     }

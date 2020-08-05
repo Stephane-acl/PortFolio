@@ -5,7 +5,7 @@
     <div class="header">
         <div class="header-picture">
             {% for user in users %}
-                <img src="{{ user.picture }}" alt="image de profile">
+                <img src="{{ vich_uploader_asset(user, 'userFile') }}" alt="{{ user.username }}">
                 <h5 class="function">{{ user.fonction }}</h5>
             {% endfor %}
             <a href="#search-projects" class="container-arrow">

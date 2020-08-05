@@ -3,22 +3,25 @@
 {% block title %}Editer utilisateur{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h1 class="greenOnWhite">Editer utilisateur</h1>
 
-        {{ include('admin/user/_passForm.html.twig') }}
-
-        {{ include('admin/user/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-        <a href="{{ path('user_index') }}">
-            <button class="btn form-button">Retour à la liste</button>
-        </a>
+    <h1 class="text-center">Editer mon profil</h1>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                {{ include('admin/user/_passForm.html.twig') }}
+                {{ include('admin/user/_form.html.twig', {'button_label': 'Modifier'}) }}
+            </div>
+        </div>
     </div>
+    <a href="{{ path('user_index') }}">
+        <button class="btn form-button">Retour à la liste</button>
+    </a>
+
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        $('.custom-file-input').on('change', function(event) {
+        $('.custom-file-input').on('change', function (event) {
             var inputFile = event.currentTarget;
             $(inputFile).parent()
                 .find('.custom-file-label')

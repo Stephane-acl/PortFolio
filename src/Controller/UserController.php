@@ -75,6 +75,9 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            // Set the pictureFile property to null to avoid serialization error
+            $user->setUserFile(null);
+
             $this->addFlash('success', "Votre profil a été modifié avec succès");
 
             return $this->redirectToRoute('user_index');
