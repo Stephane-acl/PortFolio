@@ -10,7 +10,7 @@ html {
 
 $custom-file-text: (fr: "Ajouter");
 
-//NAVBAR MOBILE VIEWe
+//NAVBAR MOBILE VIEW
 
 nav {
     margin-left: auto;
@@ -21,6 +21,7 @@ nav {
         font-family: $titlefont;
         font-size: 18px;
         font-weight: 600;
+        color: $primarycolor;
     }
 }
 

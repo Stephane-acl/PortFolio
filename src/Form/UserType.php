@@ -14,13 +14,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username', null,['label'=>'Nom', 'empty_data' => ''])
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Admin' => 'ROLE_ADMIN',
-                ],
-                'label' => "Role *"
-            ])
+
             ->add('password', null, ['label'=>'Mot de passe', 'empty_data' => ''])
             ->add('picture',null,['label'=>'Photo', 'empty_data' => ''])
             ->add('linkedin',null, ['label'=>'Linkedin', 'empty_data' => ''])

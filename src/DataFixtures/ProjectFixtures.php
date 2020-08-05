@@ -22,8 +22,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'Retro Invaders' => [
             'description' => 'Retro Invaders est mon premier projet que j\'ai fait en arrivant à la Wild Code School.
              C\'est un site qui permet de voir la cote des prix de jeux vidéos retro.
-             Nous avons développer ce projet en une semaine, c\'était un site statique mais au cours de ma formation 
-             je l\'ai dynamisé avec du Php.
+             Nous avons développé ce projet en une semaine, c\'était un site statique que j\'ai dynamisé tout au long de ma formation avec du Php.
              C\'est un projet que j\'aimerais beaucoup retravailler dans le futur.',
 
             'link' => '#',
@@ -45,7 +44,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'SideBySide' => [
             'description' => "SideBySide est un projet de projets qui permet aux personnes qui ont des compétences de se les échanger
             pour travailler ensemble sur les projets de l'un et de l'autre tout en étant bénévole.
-            Le site à été développé en 6 semaines a 4. Nous avons utilisé le simple MVC pour réaliser cette application.",
+            Le site à été développé en 6 semaines à 4. Nous avons utilisé le simple MVC pour réaliser cette application.",
 
             'link' => 'https://sidebysides.herokuapp.com/',
 
@@ -53,11 +52,11 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         ],
 
         'Doctopet' => [
-            'description' => "Doctopet est un pilulier style Tamagochi qui envois une notifications pour rappeler aux enfants de bien prendre leurs médicaments.
+            'description' => "Doctopet est un pilulier style Tamagochi qui envois une notification pour rappeler aux enfants de bien prendre leurs médicaments.
             Nous avons choisis de cibler ce type de patients car un enfant qui est atteint de maladies chroniques ne va pas forcément prendre
-             ses médicaments pour ' reprendre sois disant reprendre le controle ' car c'est la seule action qu'il peut faire pour pouvoir s'affirmer.
+             ses médicaments pour sois disant reprendre le controle  car c'est la seule action qu'il peut faire pour pouvoir s'affirmer.
              En faisant cette application nous voulions que l'enfant prenne soin de son tamagochi et qu'il voit que c'est important de prendre ses médicaments
-             pour garder une bonne santé. Nous avons développé cette appliaction à  durant un Hackathon organisé par la Wild Code School ainsi que Doctolib.
+             pour garder une bonne santé. Nous avons développé cette appliaction à 4 durant un Hackathon organisé par la Wild Code School et Doctolib.
              Nous avions 48 heures et nous avons utilisé du Php Symfony ainsi que du JQuery.",
 
             'link' => '#',
