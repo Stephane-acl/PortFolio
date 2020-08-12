@@ -364,7 +364,6 @@ nav {
         line-height: 1.2em;
         margin-bottom: 40px;
         margin-top: 100px;
-        margin-left: 0;
     }
 
     .second-title {
@@ -495,7 +494,6 @@ nav {
             font-weight: 700;
             line-height: 1.2em;
             margin-bottom: 40px;
-            margin-left: 75px;
         }
 
         .second-title {
@@ -871,9 +869,7 @@ nav {
 .message {
     background-color: #f2f2f2;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
+    margin: 100px auto 0 auto;
     border-radius: 25px;
 
     h1 {
