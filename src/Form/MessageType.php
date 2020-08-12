@@ -14,9 +14,15 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, ['label'=>'Nom', 'empty_data' => ''])
-            ->add('email', TextType::class, ['label'=>'E-mail', 'empty_data' => ''])
-            ->add('message', TextareaType::class, ['label'=>'Message', 'empty_data' => '']);
+            ->add('name', TextType::class, ['label'=>' ', 'attr' => [
+                'placeholder' => 'Nom *'],
+                'empty_data' => ''])
+            ->add('email', TextType::class, ['label'=>' ', 'attr' => [
+                'placeholder' => 'E-mail *'],
+                'empty_data' => ''])
+            ->add('message', TextareaType::class, ['label'=>' ', 'attr' => [
+                'placeholder' => 'Message *'],
+                'empty_data' => '']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

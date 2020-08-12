@@ -28,14 +28,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/", name="admin_index")
-     */
-    public function index(): Response
-    {
-        return $this->render("admin/index.html.twig");
-    }
-
     /** CLIENTS **/
 
     /**
