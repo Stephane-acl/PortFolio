@@ -28,14 +28,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/", name="admin_index")
-     */
-    public function index(): Response
-    {
-        return $this->render("admin/index.html.twig");
-    }
-
     /** CLIENTS **/
 
     /**
@@ -267,6 +259,11 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            // Set the pictureFile property to null to avoid serialization error
+            $picture->setPictureFile(null);
+
+            $this->addFlash('success', "Votre photo a été modifié avec succès");
 
             return $this->redirectToRoute('picture_index');
         }

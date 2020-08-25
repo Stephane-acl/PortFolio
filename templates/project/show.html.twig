@@ -4,68 +4,93 @@
 
 {% block body %}
 
-<div class="header-project-page">
-    <div class="container">
-        <div class="row">
-            <div class="ol-md-8 col-md-offset-2 col-sm-9 col-sm-offset-3 col-xs-12 project-padding">
-                <h1 class="main-title text-center">{{ project.name }}</h1>
+    <div class="header-project-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-12">
+                    <h2 class="second-title"></h2>
+                    <span class="second-title"></span>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-sm-9 col-sm-offset-3 col-xs-12 project-padding">
+                    <h1 class="main-title">{{ project.name }}</h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-                <h2 class="second-title">Le projet</h2>
-                <span class="second-title">{{ project.date ? project.date|date('d-m-Y') }}</span>
-            </div>
-            <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
-                <p>{{ project.description }}</p>
-                <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-12">
+                    <h2 class="second-title">Le projet</h2>
+                    <span class="second-title">{{ project.date ? project.date|date('d-m-Y') }}</span>
+                </div>
+                <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
+                    <p>{{ project.description }}</p>
+                    <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="main-project-page">
-    <div class="container-image">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                {% for picture in project.picture %}
-                <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" class="{% if loop.index == 1 %}active{% endif %}"></li>
-                {% endfor %}
-            </ol>
-            <div class="carousel-inner">
-                {% for picture in project.picture %}
-                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                        <img src="{{ picture.name }}" class="d-block w-100" alt="{{ project.name }}">
-                    </div>
-                {% endfor %}
+    <div class="main-project-page">
+        <div class="container-image">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for picture in project.picture %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}"
+                            class="{% if loop.index == 1 %}active{% endif %}"></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for picture in project.picture %}
+                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                            <img class="d-block w-100"
+                                 src="{{ vich_uploader_asset(picture, 'pictureFile') }}"
+                                 alt="{{ project.name }}"/>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
         </div>
         <div class="container-technos">
             <div class="caption">
                 Technologies utilisées
             </div>
+                <span>
             {% for techno in project.techno %}
-                {{ techno.name }} /
-            {% endfor %}
+                | {{ techno.name }}
+            {% endfor %} |
+                </span>
             <h2 class="second-title">Le Client</h2>
-            {{ project.client.name }}
+            <span>{{ project.client.name }}</span>
+
         </div>
-            </div>
+    </div>
     <div class="footer-project-page">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{{ path('project_show', {'slug':'sidebyside'}) }}">Précédent</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            {% for projectInfo in projects %}
+            {% if projectInfo.id == project.id %}
+            {% if loop.index0 == 0 %}
+                {% set slugPrev = projects|last.slug %}
+            {% else %}
+                {% set slugPrev = projects[loop.index0 -1].slug %}
+            {% endif %}
+            {% if loop.index0 == projects|length -1 %}
+                {% set slugNext = projects|first.slug %}
+            {% else %}
+                {% set slugNext = projects[loop.index0 +1].slug %}
+            {% endif %}
+            <a class="navbar-brand" href="{{ path('project_show', {'slug':slugPrev }) }}">Précédent</a>
+            <div class="navbar-collapse footer" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"></ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <a class="navbar-brand" href="{{ path('project_show', {'slug':'retro-invaders'}) }}">Suivant</a>
+                    <a class="navbar-brand" href="{{ path('project_show', {'slug':slugNext}) }}">Suivant</a>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </nav>
@@ -74,4 +99,4 @@
         <a href="https://www.linkedin.com/in/st%C3%A9phane-acloque-b679751a4/" target="_blank" title="Linkedin"><img
                     src="{{ asset('img/linkedin.svg') }}" alt="logo LinkedIn" class="text-center"></a>
     </div>
-    {% endblock %}
+{% endblock %}

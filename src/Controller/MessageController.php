@@ -44,6 +44,7 @@ class MessageController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
+
             $this->addFlash(
                 'success',
                 'Votre message message à bien été envoyé !'

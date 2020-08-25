@@ -26,12 +26,12 @@ class TechnoFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         foreach (self::TECHNOS as $key => $data) {
-            $client = new Techno();
-            $client ->setName($key);
+            $techno = new Techno();
+            $techno ->setName($key);
             foreach ($data as $project) {
-                $client->addProject($this->getReference($project));
+                $techno->addProject($this->getReference($project));
             }
-            $manager->persist($client);
+            $manager->persist($techno);
         }
         $manager->flush();
     }
