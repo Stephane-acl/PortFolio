@@ -20,7 +20,6 @@
         "heroku-postbuild": "webpack -p --config ./resources/webpack/webpack.config.js"
     },
     "engines": {
-        "node": "12.16.1",
-        "yarn": "1.22.4"
+        "node": "12.x"
     }
 }
