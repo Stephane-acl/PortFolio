@@ -37,7 +37,8 @@
         "symfony/yaml": "4.4.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^1.15"
+        "vich/uploader-bundle": "^1.15",
+        "symfony/web-profiler-bundle": "^4.4"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
