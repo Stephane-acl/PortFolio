@@ -17,6 +17,11 @@ nav {
     margin-right: auto;
     width: 100%;
 
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+    }
+
     a {
         font-family: $titlefont;
         font-size: 18px;
@@ -33,6 +38,11 @@ nav {
         margin-left: auto;
         margin-right: auto;
         width: 75%;
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: row;
+        }
     }
 }
 
@@ -392,6 +402,10 @@ nav {
         background-color: #000000;
         margin-top: 4px;
     }
+
+    .project-date {
+        margin-bottom: 15px;
+    }
 }
 
 .main-project-page {
@@ -472,7 +486,7 @@ nav {
     margin-bottom: 20px;
 
     img {
-        height: 30px;
+        height: 20px;
     }
 }
 
@@ -521,6 +535,10 @@ nav {
             height: 1px;
             background-color: #000000;
             margin-top: 4px;
+        }
+
+        .project-date {
+            margin-bottom: 0;
         }
     }
     .main-project-page {
@@ -840,30 +858,32 @@ nav {
 
 @media screen and (max-width: 769px) {
     table {
-        display:flex;
+        display: flex;
     }
     thead {
-        width:20%;
-        min-width:90px;
+        width: 20%;
+        min-width: 90px;
     }
     tbody {
-        flex:1;
+        flex: 1;
     }
     tr {
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
     }
     th, td {
-        text-align:left;
-        border-right:0;
-        border-bottom:1px solid black;
+        text-align: left;
+        border-right: 0;
+        border-bottom: 1px solid black;
     }
 }
-@media screen and (max-width:461px) {
+
+@media screen and (max-width: 461px) {
     tbody tr:not(:first-child) td::before {
-        margin-left:-95px;
+        margin-left: -95px;
     }
 }
+
 //CONTACT FORM MOBILE VIEW
 
 .message {
