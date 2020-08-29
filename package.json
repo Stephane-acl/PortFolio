@@ -13,10 +13,12 @@
     "license": "UNLICENSED",
     "private": true,
     "scripts": {
+        "start": "node webpack.config.js",
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "build": "webpack -p --config ./resources/webpack/webpack.config.js --display-error-details",
         "watch": "webpack -d --watch --config ./resources/webpack/webpack.config.js --display-error-details",
+        "heroku-postbuild": "webpack -p --config ./resources/webpack/webpack.config.js"
     },
     "engines": {
         "node": "12.16.x",
