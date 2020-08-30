@@ -22,7 +22,12 @@
                 </div>
                 <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
                     <p>{{ project.description }}</p>
-                    <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
+                    {% if project.link == '#' %}
+                        <a style="display: none" href="{{ project.link }}" class="project-link" target="_blank">
+                            Voir le projet</a>
+                    {% else %}
+                        <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -59,7 +64,7 @@
             <div class="caption">
                 Technologies utilisées
             </div>
-                <span>
+            <span>
             {% for techno in project.techno %}
                 | {{ techno.name }}
             {% endfor %} |
