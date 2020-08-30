@@ -19,9 +19,8 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\NotBlank(message="Le nom ne devrait pas être vide")
-     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $message;
 

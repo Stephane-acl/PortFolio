@@ -5,7 +5,7 @@
     <div class="header">
         <div class="header-picture">
             {% for user in users %}
-                <img src="{{ asset('img/steph.jpg') }}" alt="{{ user.username }}">
+                <img src="{{ vich_uploader_asset(user, 'userFile') }}" alt="{{ user.username }}" />
                 <h5 class="function">{{ user.fonction }}</h5>
             {% endfor %}
             <a href="#search-projects" class="container-arrow">
@@ -25,7 +25,7 @@
                     {% if project.picture[0] is not defined %}
                         <img src=" {{ asset('img/paper.jpeg') }}" alt="Image papier et stylo">
                     {% else %}
-                        <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="image du projet"/>
+                        <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="image du projet" />
                     {% endif %}
                     <a class="button button-on-hover" href="{{ path('project_show', {'slug':project.slug}) }}">
                         {{ project.name }}

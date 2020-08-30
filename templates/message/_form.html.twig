@@ -3,7 +3,9 @@
         <div class="col-12 col-md-10 col-lg-8">
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button class="btn btn-primary">{{ button_label|default('Envoyer') }}</button>
+            <div class=" d-flex justify-content-center align-items-center">
+                <button class="btn">{{ button_label|default('Envoyer') }}</button>
+            </div>
             {{ form_end(form) }}
         </div>
     </div>
