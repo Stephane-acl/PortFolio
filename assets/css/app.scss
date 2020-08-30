@@ -923,6 +923,16 @@ nav {
         font-family: $textfont;
         margin-top: 10px;
     }
+
+    button:hover {
+        background-color: white;
+        border: 1px solid $primarycolor;
+        border-radius: 10px;
+        padding: 5px 20px 5px 20px;
+        color: $primarycolor;
+        text-decoration: none;
+        font-family: $textfont;
+    }
 }
 
 //CONTACT FORM DESKTOP VIEW
@@ -971,6 +981,7 @@ nav {
             padding: 8px 22px 7px 22px;
             color: $primarycolor;
             text-decoration: none;
+            font-family: $textfont;
         }
     }
 }
