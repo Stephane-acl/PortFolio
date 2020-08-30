@@ -419,7 +419,9 @@ nav {
             vertical-align: middle;
             height: 300px;
             object-fit: cover;
-            border: 1px solid lightgray;
+            border-top: 1px solid lightgray;
+            border-left: 1px solid lightgray;
+            border-right: 1px solid lightgray;
         }
     }
 
@@ -552,7 +554,9 @@ nav {
                 vertical-align: middle;
                 height: 650px;
                 object-fit: cover;
-                border: 1px solid lightgray;
+                border-top: 1px solid lightgray;
+                border-left: 1px solid lightgray;
+                border-right: 1px solid lightgray;
             }
         }
 
@@ -887,17 +891,37 @@ nav {
 //CONTACT FORM MOBILE VIEW
 
 .message {
-    background-color: #f2f2f2;
     width: 100%;
     margin: 100px auto 0 auto;
     border-radius: 25px;
 
     h1 {
-        margin: 15px 0 35px 0;
+        padding-top: 25px;
+        font-family: $textfont;
     }
 
     form {
-        margin: 10px;
+        margin: 10px 10px 25px 10px;
+    }
+
+    input {
+        box-shadow: 2px 3px 6px lightgrey;
+        border-radius: 10px;
+    }
+
+    textarea {
+        box-shadow: 2px 3px 6px lightgrey;
+        border-radius: 10px;
+    }
+
+
+    button {
+        background-color: $primarycolor;
+        padding: 5px 20px 5px 20px;
+        border-radius: 10px;
+        color: white;
+        font-family: $textfont;
+        margin-top: 10px;
     }
 }
 
@@ -906,7 +930,6 @@ nav {
 @media all and (min-width: 769px) {
 
     .message {
-        background-color: #f2f2f2;
         width: 65%;
         margin-left: auto;
         margin-right: auto;
@@ -914,11 +937,40 @@ nav {
         border-radius: 25px;
 
         h1 {
-            margin: 15px 0 35px 0;
+            padding: 30px;
+            font-family: $textfont;
         }
 
         form {
-            margin: 10px;
+            margin: 0 10px 30px 10px;
+        }
+
+        input {
+            box-shadow: 2px 3px 6px lightgrey;
+            border-radius: 10px;
+        }
+
+        textarea {
+            box-shadow: 2px 3px 6px lightgrey;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: $primarycolor;
+            padding: 8px 22px 7px 22px;
+            border-radius: 10px;
+            color: white;
+            font-family: $textfont;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: white;
+            border: 1px solid $primarycolor;
+            border-radius: 10px;
+            padding: 8px 22px 7px 22px;
+            color: $primarycolor;
+            text-decoration: none;
         }
     }
 }
