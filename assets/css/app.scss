@@ -986,4 +986,38 @@ nav {
     }
 }
 
+
+// MESSAGE FLASH MOBILE VIEW
+
+.alert {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    position: relative;
+
+    .iconX {
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        font-weight: 600;
+    }
+}
+
+// MESSAGE FLASH DESKTOP VIEW
+@media all and (min-width: 769px) {
+    .alert {
+        margin-right: auto;
+        margin-left: auto;
+        width: 75%;
+        position: relative;
+
+        .iconX {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-weight: 600;
+        }
+    }
+}
+
 @import "~bootstrap/scss/bootstrap";
