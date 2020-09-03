@@ -22,7 +22,7 @@
                             <td>{{ techno.id }}</td>
                             <td>{{ techno.name }}</td>
                             <td>
-                                <a href="{{ path('techno_edit', {'id': techno.id}) }}">Editer</a>
+                                <a href="{{ path('admin_techno_edit', {'id': techno.id}) }}">Editer</a>
                             </td>
                         </tr>
                     {% else %}
@@ -35,6 +35,6 @@
             </div>
         </div>
     </div>
-    <a href="{{ path('techno_new') }}">Créer une nouvelle techno</a><br />
-    <a href="{{ path('project_index') }}">Retour</a>
+    <a href="{{ path('admin_techno_new') }}">Créer une nouvelle techno</a><br />
+    <a href="{{ path('admin_project_index') }}">Retour</a>
 {% endblock %}

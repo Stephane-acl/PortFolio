@@ -7,7 +7,18 @@
 
     {{ include('admin/techno/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('techno_index') }}">Retour</a>
+    <a href="{{ path('admin_techno_index') }}">Retour</a>
 
     {{ include('admin/techno/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.custom-file-input').on('change', function (event) {
+            var inputFile = event.currentTarget;
+            $(inputFile).parent()
+                .find('.custom-file-label')
+                .html(inputFile.files[0].name);
+        });
+    </script>
 {% endblock %}

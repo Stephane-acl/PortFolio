@@ -22,7 +22,7 @@
                             <td>{{ client.id }}</td>
                             <td>{{ client.name }}</td>
                             <td>
-                                <a href="{{ path('client_edit', {'id': client.id}) }}">editer</a>
+                                <a href="{{ path('admin_client_edit', {'id': client.id}) }}">editer</a>
                             </td>
                         </tr>
                     {% else %}
@@ -35,6 +35,6 @@
             </div>
         </div>
     </div>
-    <a href="{{ path('client_new') }}">Créer un nouveau client</a><br />
-    <a href="{{ path('project_index') }}">Retour</a>
+    <a href="{{ path('admin_client_new') }}">Créer un nouveau client</a><br />
+    <a href="{{ path('admin_project_index') }}">Retour</a>
 {% endblock %}
