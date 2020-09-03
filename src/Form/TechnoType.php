@@ -13,6 +13,7 @@ class TechnoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title',null,['label'=>'Nom', 'empty_data' => ''])
             ->add('technoFile', VichFileType::class, [
                 'required' => false,
                 'allow_delete' => false, // True to display a delete checkbox
