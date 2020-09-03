@@ -4,14 +4,17 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\Message;
 use App\Entity\Picture;
 use App\Entity\Project;
 use App\Entity\Techno;
 use App\Form\ClientType;
+use App\Form\MessageType;
 use App\Form\PictureType;
 use App\Form\ProjectType;
 use App\Form\TechnoType;
 use App\Repository\ClientRepository;
+use App\Repository\MessageRepository;
 use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnoRepository;
@@ -23,7 +26,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin")
+ * @Route("/admin", name="admin_")
  */
 
 class AdminController extends AbstractController
@@ -58,7 +61,7 @@ class AdminController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('client_index');
+            return $this->redirectToRoute('admin_client_index');
         }
 
         return $this->render('admin/client/new.html.twig', [
@@ -82,7 +85,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('client_index');
+            return $this->redirectToRoute('admin_client_index');
         }
 
         return $this->render('admin/client/edit.html.twig', [
@@ -106,7 +109,7 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('client_index');
+        return $this->redirectToRoute('admin_client_index');
     }
 
     /** PROJECTS **/
@@ -142,7 +145,7 @@ class AdminController extends AbstractController
             $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('project_index');
+            return $this->redirectToRoute('admin_project_index');
         }
 
         return $this->render('admin/project/new.html.twig', [
@@ -156,6 +159,7 @@ class AdminController extends AbstractController
      * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @param Project $project
+     * @param Slugify $slugify
      * @return Response
      */
     public function editProject(Request $request, Project $project, Slugify $slugify): Response
@@ -167,7 +171,7 @@ class AdminController extends AbstractController
             $project->setSlug($slugify->generate($project->getName()));
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('project_index');
+            return $this->redirectToRoute('admin_project_index');
         }
 
         return $this->render('admin/project/edit.html.twig', [
@@ -191,7 +195,7 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('project_index');
+        return $this->redirectToRoute('admin_project_index');
     }
 
     /** PICTURES **/
@@ -224,7 +228,7 @@ class AdminController extends AbstractController
             $entityManager->persist($picture);
             $entityManager->flush();
 
-            return $this->redirectToRoute('picture_index');
+            return $this->redirectToRoute('admin_picture_index');
         }
 
         return $this->render('admin/picture/new.html.twig', [
@@ -265,7 +269,7 @@ class AdminController extends AbstractController
 
             $this->addFlash('success', "Votre photo a été modifié avec succès");
 
-            return $this->redirectToRoute('picture_index');
+            return $this->redirectToRoute('admin_picture_index');
         }
 
         return $this->render('admin/picture/edit.html.twig', [
@@ -289,7 +293,7 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('picture_index');
+        return $this->redirectToRoute('admin_picture_index');
     }
 
     /** TECHNOS **/
@@ -322,7 +326,7 @@ class AdminController extends AbstractController
             $entityManager->persist($techno);
             $entityManager->flush();
 
-            return $this->redirectToRoute('techno_index');
+            return $this->redirectToRoute('admin_techno_index');
         }
 
         return $this->render('admin/techno/new.html.twig', [
@@ -346,7 +350,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('techno_index');
+            return $this->redirectToRoute('admin_techno_index');
         }
 
         return $this->render('admin/techno/edit.html.twig', [
@@ -370,6 +374,76 @@ class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('techno_index');
+        return $this->redirectToRoute('admin_techno_index');
+    }
+
+    /** MESSAGE **/
+
+    /**
+     * @Route("/message", name="message_index", methods={"GET"})
+     * @param MessageRepository $messageRepository
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function messageIndex(MessageRepository $messageRepository): Response
+    {
+        return $this->render('admin/message/index.html.twig', [
+            'messages' => $messageRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/message/{id}", name="message_show", methods={"GET"})
+     * @param Message $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function messageShow(Message $message): Response
+    {
+        return $this->render('admin/message/show.html.twig', [
+            'message' => $message,
+        ]);
+    }
+
+    /**
+     * @Route("/message/{id}/edit", name="message_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Message $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function messageEdit(Request $request, Message $message): Response
+    {
+        $form = $this->createForm(MessageType::class, $message);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_message_index');
+        }
+
+        return $this->render('admin/message/edit.html.twig', [
+            'message' => $message,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/message/{id}", name="message_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Message $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function messageDelete(Request $request, Message $message): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$message->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($message);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_message_index');
     }
 }

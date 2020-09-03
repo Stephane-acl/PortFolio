@@ -10,4 +10,7 @@ vich_uploader:
             uri_prefix: /uploads/user
             upload_destination: '%upload_directory%/user'
             namer: Vich\UploaderBundle\Naming\UniqidNamer
-
+        techno_file:
+            uri_prefix: /uploads/techno
+            upload_destination: '%upload_directory%/techno'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
