@@ -8,6 +8,13 @@ html {
     scroll-behavior: smooth;
 }
 
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
 $custom-file-text: (fr: "Ajouter");
 
 //NAVBAR MOBILE VIEW
@@ -439,16 +446,20 @@ nav {
             padding: 15px;
             font-size: 12px;
             opacity: 0.6;
-            color: #e0e0e0;
             font-weight: 900;
             letter-spacing: 1.3px;
             line-height: 1.5em;
-            margin-top: 3px;
             text-transform: uppercase;
         }
 
         span {
-            font-size: 12px;
+            @include flexCenter(row);
+
+            img {
+                height: 32px;
+                width: 32px;
+                margin: 0 8px 0 8px;
+            }
         }
     }
 
@@ -561,7 +572,7 @@ nav {
         }
 
         .container-technos {
-            background-color: #1400c1;
+            background-color: $primarycolor;
             color: white;
             margin-left: auto;
             margin-right: auto;
@@ -570,23 +581,27 @@ nav {
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 150px;
+            height: 180px;
             margin-bottom: 100px;
 
             .caption {
                 padding: 15px;
                 font-size: 14px;
                 opacity: 0.6;
-                color: #e0e0e0;
                 font-weight: 900;
                 letter-spacing: 1.3px;
                 line-height: 1.5em;
-                margin-top: 3px;
                 text-transform: uppercase;
             }
 
             span {
-                font-size: 15px;
+                @include flexCenter(row);
+
+                img {
+                    height: 43px;
+                    width: 43px;
+                    margin: 0 8px 0 8px;
+                }
             }
         }
 
