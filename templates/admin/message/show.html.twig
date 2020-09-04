@@ -32,7 +32,5 @@
     </div>
     <a href="{{ path('admin_message_index') }}">Retour</a><br />
 
-    <a href="{{ path('admin_message_edit', {'id': message.id}) }}">Editer</a>
-
     {{ include('admin/message/_delete_form.html.twig') }}
 {% endblock %}

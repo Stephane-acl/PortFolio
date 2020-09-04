@@ -873,15 +873,14 @@ nav {
     }
 }
 
-//ADMIN TAB MOBILE VIEW
+//ADMIN TAB INDEX MOBILE VIEW
 
 @media screen and (max-width: 769px) {
     table {
         display: flex;
     }
     thead {
-        width: 20%;
-        min-width: 90px;
+        display: none;
     }
     tbody {
         flex: 1;
@@ -889,17 +888,23 @@ nav {
     tr {
         display: flex;
         flex-direction: column;
+        border: 3px solid $primarycolor;
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
     th, td {
-        text-align: left;
+        text-align: center;
         border-right: 0;
-        border-bottom: 1px solid black;
+        border-top: none;
     }
-}
 
-@media screen and (max-width: 461px) {
-    tbody tr:not(:first-child) td::before {
-        margin-left: -95px;
+    .table-project {
+
+        .id-project {
+            color: white;
+            background-color: $primarycolor;
+            border-top: none;
+        }
     }
 }
 
@@ -1034,5 +1039,112 @@ nav {
         }
     }
 }
+
+// ADMIN EDIT PROJECT FORM MOBILE VIEW
+
+.form-edit {
+    background-color: $primarycolor;
+    padding: 30px;
+    color: white;
+    font-weight: 600;
+    font-family: $textfont;
+    border: 5px solid darkblue;
+
+    h1 {
+        font-family: $textfont;
+        font-size: 1.8rem;
+    }
+
+    input, textarea, select {
+        box-shadow: 2px 3px 6px lightgrey;
+        border-radius: 10px;
+    }
+
+    input[type=checkbox] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+    }
+
+    input[type=checkbox] {
+        border-radius: 4px;
+        height: 15px;
+        width: 15px;
+        background: #fff;
+    }
+
+    input[type="checkbox"]:checked {
+        background: yellow;
+        position: relative;
+
+        &:before {
+            font-family: $titlefont;
+            content: '\f00c';
+            display: block;
+            color: grey;
+            font-size: 13px;
+            position: absolute;
+        }
+    }
+
+    .btn {
+        font-size: 13px;
+    }
+}
+
+// ADMIN EDIT PROJECT FORM DESKTOP VIEW
+@media all and (min-width: 769px) {
+
+    .form-edit {
+        background-color: $primarycolor;
+        padding: 30px;
+        color: white;
+        font-weight: 600;
+        font-family: $textfont;
+        border: 5px solid darkblue;
+
+        h1 {
+            font-family: $textfont;
+            font-size: 2.5rem;
+        }
+
+        input, textarea, select {
+            box-shadow: 2px 3px 6px lightgrey;
+            border-radius: 10px;
+        }
+
+        input[type=checkbox] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+        }
+
+        input[type=checkbox] {
+            border-radius: 4px;
+            height: 15px;
+            width: 15px;
+            background: #fff;
+        }
+
+        input[type="checkbox"]:checked {
+            background: yellow;
+            position: relative;
+
+            &:before {
+                font-family: $textfont;
+                content: '\f00c';
+                display: block;
+                color: grey;
+                font-size: 13px;
+                position: absolute;
+            }
+        }
+
+        .btn {
+            font-size: 1rem;
+        }
+    }
+}
+
 
 @import "~bootstrap/scss/bootstrap";

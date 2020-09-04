@@ -411,30 +411,6 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/message/{id}/edit", name="message_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Message $message
-     * @return Response
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function editMessage(Request $request, Message $message): Response
-    {
-        $form = $this->createForm(MessageType::class, $message);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_message_index');
-        }
-
-        return $this->render('admin/message/edit.html.twig', [
-            'message' => $message,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/message/{id}", name="message_delete", methods={"DELETE"})
      * @param Request $request
      * @param Message $message
@@ -447,6 +423,8 @@ class AdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($message);
             $entityManager->flush();
+
+            $this->addFlash('success', "Message supprimé avec succès");
         }
 
         return $this->redirectToRoute('admin_message_index');

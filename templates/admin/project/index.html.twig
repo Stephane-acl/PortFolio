@@ -16,8 +16,9 @@
                 <li><a href="{{ path('admin_message_index') }}">Gérer mes messages</a></li>
             </ul>
             <div class="admin-btn-menu">
-                <a href="{{ path('admin_project_new') }}">Nouveau projet</a><br/>
-                <a href="{{ path('app_homeIndex') }}">Retour</a>
+                <a class="btn btn-success" href="{{ path('admin_project_new') }}">Nouveau projet</a><br />
+                <a class="btn btn-warning" href="{{ path('app_homeIndex') }}">Retour</a><br />
+                <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         </div>
 
@@ -36,7 +37,7 @@
             {% for project in projects %}
                 <tr>
                     <td class="id-project">{{ project.id }}</td>
-                    <td>{{ project.name }}</td>
+                    <td class="id-project">{{ project.name }}</td>
                     <td>{{ project.description }}</td>
                     <td>{{ project.date ? project.date|date('Y-m-d') }}</td>
                     <td>

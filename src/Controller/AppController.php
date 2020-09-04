@@ -69,7 +69,7 @@ class AppController extends AbstractController
                 'Votre message message à bien été envoyé !'
             );
 
-            return $this->redirectToRoute('message_new');
+            return $this->redirectToRoute('app_message_new');
         }
 
         return $this->render('message/new.html.twig', [
