@@ -8,22 +8,27 @@ use App\Entity\Message;
 use App\Entity\Picture;
 use App\Entity\Project;
 use App\Entity\Techno;
+use App\Entity\User;
 use App\Form\ClientType;
+use App\Form\EditPasswordType;
 use App\Form\MessageType;
 use App\Form\PictureType;
 use App\Form\ProjectType;
 use App\Form\TechnoType;
+use App\Form\UserType;
 use App\Repository\ClientRepository;
 use App\Repository\MessageRepository;
 use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TechnoRepository;
+use App\Repository\UserRepository;
 use App\Service\Slugify;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/admin", name="admin_")
@@ -385,7 +390,7 @@ class AdminController extends AbstractController
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function messageIndex(MessageRepository $messageRepository): Response
+    public function indexMessage(MessageRepository $messageRepository): Response
     {
         return $this->render('admin/message/index.html.twig', [
             'messages' => $messageRepository->findAll(),
@@ -398,7 +403,7 @@ class AdminController extends AbstractController
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function messageShow(Message $message): Response
+    public function showMessage(Message $message): Response
     {
         return $this->render('admin/message/show.html.twig', [
             'message' => $message,
@@ -412,7 +417,7 @@ class AdminController extends AbstractController
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function messageEdit(Request $request, Message $message): Response
+    public function editMessage(Request $request, Message $message): Response
     {
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
@@ -436,7 +441,7 @@ class AdminController extends AbstractController
      * @return Response
      * @IsGranted("ROLE_ADMIN")
      */
-    public function messageDelete(Request $request, Message $message): Response
+    public function deleteMessage(Request $request, Message $message): Response
     {
         if ($this->isCsrfTokenValid('delete'.$message->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -445,5 +450,97 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_message_index');
+    }
+
+    /** USER **/
+
+    /**
+     * @Route("/user", name="user_index", methods={"GET"})
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function indexUser(UserRepository $userRepository): Response
+    {
+        return $this->render('admin/user/index.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/user/{id}", name="user_show", methods={"GET"})
+     * @param User $user
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function showUser(User $user): Response
+    {
+        return $this->render('admin/user/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/user/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param User $user
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
+     */
+    public function editUser(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        $passForm = $this->createForm(EditPasswordType::class, $user);
+        $passForm->handleRequest($request);
+
+        if ($passForm->isSubmitted() && $passForm->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $passForm->get('password')->getData()
+                )
+            );
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', "Votre mot de passe a été modifié avec succès");
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            // Set the pictureFile property to null to avoid serialization error
+            $user->setUserFile(null);
+
+            $this->addFlash('success', "Votre profil a été modifié avec succès");
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
+        return $this->render('admin/user/edit.html.twig', [
+            'user' => $user,
+            'passForm' => $passForm->createView(),
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/user/{id}", name="user_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param User $user
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function deleteUser(Request $request, User $user): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_user_index');
     }
 }

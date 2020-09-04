@@ -12,7 +12,7 @@
                 <li><a href="{{ path('admin_client_index') }}">Gérer les clients</a></li>
                 <li><a href="{{ path('admin_picture_index') }}">Gérer les photos</a></li>
                 <li><a href="{{ path('admin_techno_index') }}">Gérer les technos</a></li>
-                <li><a href="{{ path('user_index') }}">Gérer mon profil</a></li>
+                <li><a href="{{ path('admin_user_index') }}">Gérer mon profil</a></li>
                 <li><a href="{{ path('admin_message_index') }}">Gérer mes messages</a></li>
             </ul>
             <div class="admin-btn-menu">
@@ -48,7 +48,7 @@
                         {% endif %}
                     </td>
                     <td class="container-btn">
-                        <a class="btn-see" href="{{ path('project_show', {'slug': project.slug}) }}">Voir</a>
+                        <a class="btn-see" href="{{ path('app_project_show', {'slug': project.slug}) }}">Voir</a>
                         <a class="btn-edit" href="{{ path('admin_project_edit', {'slug': project.slug}) }}">Editer</a>
                     </td>
                 </tr>

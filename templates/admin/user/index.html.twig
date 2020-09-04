@@ -29,8 +29,8 @@
                             <td>{{ user.linkedin }}</td>
                             <td>{{ user.fonction }}</td>
                             <td>
-                                <a href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
-                                <a href="{{ path('user_edit', {'id': user.id}) }}">
+                                <a href="{{ path('admin_user_show', {'id': user.id}) }}">Voir</a>
+                                <a href="{{ path('admin_user_edit', {'id': user.id}) }}">
                                     <button class="btn form-button">{{ button_label|default('Editer') }}</button>
                                 </a>
                             </td>
