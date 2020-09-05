@@ -1,8 +1,6 @@
-// Fonts
-$titlefont: 'Fira Sans', sans-serif;
-$textfont: 'Montserrat', sans-serif;
-//Color
-$primarycolor: #1400c1;
+@import "vars";
+@import "admin";
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 html {
     scroll-behavior: smooth;
@@ -638,275 +636,6 @@ nav {
     }
 }
 
-//INDEX ADMIN MOBILE VIEW
-
-.title-admin {
-    margin-top: 40px;
-}
-
-.index-admin {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-
-    .links-container {
-        background-color: $primarycolor;
-        box-shadow: 0 2px 5px #1c1a19;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 1.1em;
-        display: flex;
-        flex-direction: column;
-
-        img {
-            height: 80px;
-            margin: 10px;
-        }
-
-        .admin-btn-menu {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-self: center;
-            margin-top: 10px;
-        }
-
-        a {
-            color: white;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 20px 30px 0 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            li {
-                margin-bottom: 15px;
-            }
-        }
-    }
-
-    .table-project {
-
-        thead {
-            background-color: $primarycolor;
-            color: white;
-            text-align: center;
-        }
-
-        .id-project {
-            font-weight: bold;;
-        }
-
-        .container-btn {
-            display: flex;
-            flex-direction: column;
-
-            .btn-see {
-                background-color: white;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                margin-bottom: 15px;
-                width: 100%;
-                color: $primarycolor;
-                text-align: center;
-            }
-
-            .btn-see:hover {
-                background-color: $primarycolor;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                color: white;
-                text-decoration: none;
-            }
-
-            .btn-edit {
-                background-color: $primarycolor;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                width: 100%;
-                color: white;
-                text-decoration: none;
-                text-align: center;
-            }
-
-            .btn-edit:hover {
-                background-color: white;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                color: $primarycolor;
-                text-decoration: none;
-            }
-        }
-    }
-}
-
-//INDEX ADMIN DESKTOP VIEW
-
-@media all and (min-width: 769px) {
-
-    .title-admin {
-        margin-top: 40px;
-    }
-
-    .index-admin {
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        margin: 30px auto 40px;
-
-        .links-container {
-            background-color: $primarycolor;
-            margin-top: 1px;
-            box-shadow: none;
-            border-radius: 0;
-            padding: 10px;
-            font-size: 1.2em;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-
-            img {
-                height: 100px;
-                margin: 10px;
-            }
-
-            .admin-btn-menu {
-                position: absolute;
-                bottom: 15px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                align-self: center;
-            }
-
-            a {
-                color: white;
-            }
-
-            ul {
-                list-style-type: none;
-                padding: 60px 30px 0 30px;
-                width: max-content;
-
-                li {
-                    margin-bottom: 20px;
-                }
-            }
-        }
-
-        .table-project {
-            width: 85%;
-
-            thead {
-                background-color: $primarycolor;
-                color: white;
-                text-align: center;
-            }
-
-            .id-project {
-                font-weight: bold;;
-            }
-
-            .container-btn {
-                display: flex;
-                flex-direction: column;
-
-                .btn-see {
-                    background-color: white;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-                    margin-bottom: 15px;
-                    width: 100%;
-
-                    a {
-                        color: $primarycolor;
-                        text-decoration: none;
-                    }
-                }
-
-                .btn-see:hover {
-                    background-color: $primarycolor;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-
-                    a {
-                        color: white;
-                        text-decoration: none;
-                    }
-                }
-
-                .btn-edit {
-                    background-color: $primarycolor;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-                    width: 100%;
-
-                    a {
-                        color: white;
-                        text-decoration: none;
-                    }
-                }
-
-                .btn-edit:hover {
-                    background-color: white;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-
-                    a {
-                        color: $primarycolor;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-    }
-}
-
-//ADMIN TAB INDEX MOBILE VIEW
-
-@media screen and (max-width: 769px) {
-    table {
-        display: flex;
-    }
-    thead {
-        display: none;
-    }
-    tbody {
-        flex: 1;
-    }
-    tr {
-        display: flex;
-        flex-direction: column;
-        border: 3px solid $primarycolor;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
-    th, td {
-        text-align: center;
-        border-right: 0;
-        border-top: none;
-    }
-
-    .table-project {
-
-        .id-project {
-            color: white;
-            background-color: $primarycolor;
-            border-top: none;
-        }
-    }
-}
 
 //CONTACT FORM MOBILE VIEW
 
@@ -1006,7 +735,6 @@ nav {
     }
 }
 
-
 // MESSAGE FLASH MOBILE VIEW
 
 .alert {
@@ -1049,6 +777,10 @@ nav {
     font-weight: 600;
     font-family: $textfont;
     border: 5px solid darkblue;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
 
     h1 {
         font-family: $textfont;
@@ -1102,6 +834,7 @@ nav {
         font-weight: 600;
         font-family: $textfont;
         border: 5px solid darkblue;
+        overflow-x: auto;
 
         h1 {
             font-family: $textfont;
@@ -1147,4 +880,3 @@ nav {
 }
 
 
-@import "~bootstrap/scss/bootstrap";
