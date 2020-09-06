@@ -20,7 +20,7 @@ class TechnoRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Techno[] Returns an array of Techno objects
+    //  * @return TechnoUsed[] Returns an array of TechnoUsed objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TechnoRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Techno
+    public function findOneBySomeField($value): ?TechnoUsed
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

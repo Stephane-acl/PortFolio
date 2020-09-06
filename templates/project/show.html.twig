@@ -22,10 +22,7 @@
                 </div>
                 <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
                     <p>{{ project.description }}</p>
-                    {% if project.link == '#' %}
-                        <a style="display: none" href="{{ project.link }}" class="project-link" target="_blank">
-                            Voir le projet</a>
-                    {% else %}
+                    {% if project.link is not empty %}
                         <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
                     {% endif %}
                 </div>
@@ -89,11 +86,11 @@
             {% else %}
                 {% set slugNext = projects[loop.index0 +1].slug %}
             {% endif %}
-            <a class="navbar-brand" href="{{ path('project_show', {'slug':slugPrev }) }}">Précédent</a>
+            <a class="navbar-brand" href="{{ path('app_project_show', {'slug':slugPrev }) }}">Précédent</a>
             <div class="navbar-collapse footer" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"></ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <a class="navbar-brand" href="{{ path('project_show', {'slug':slugNext}) }}">Suivant</a>
+                    <a class="navbar-brand" href="{{ path('app_project_show', {'slug':slugNext}) }}">Suivant</a>
                     {% endif %}
                     {% endfor %}
                 </div>

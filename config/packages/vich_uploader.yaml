@@ -14,3 +14,7 @@ vich_uploader:
             uri_prefix: /uploads/techno
             upload_destination: '%upload_directory%/techno'
             namer: Vich\UploaderBundle\Naming\UniqidNamer
+        client_file:
+            uri_prefix: /uploads/client
+            upload_destination: '%upload_directory%/client'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer

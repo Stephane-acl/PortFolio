@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
+ * @Vich\Uploadable
  */
 class Client
 {
@@ -35,6 +39,23 @@ class Client
      *     )
      */
     private $project;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", allowEmptyString="false", maxMessage="Ce champ est trop long")
+     */
+    private $picture;
+
+    /**
+     * @Vich\UploadableField(mapping="client_file", fileNameProperty="picture")
+     * @var File | null
+     */
+    private $clientFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updateAt;
 
     public function __construct()
     {
@@ -85,6 +106,44 @@ class Client
                 $project->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function setClientFile(File $image = null):Client
+    {
+        $this->clientFile = $image;
+        if ($image) {
+            $this->updateAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getClientFile(): ?File
+    {
+        return $this->clientFile;
+    }
+
+    public function getUpdateAt(): ?\DateTime
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(?\DateTime $updateAt): self
+    {
+        $this->updateAt = $updateAt;
 
         return $this;
     }

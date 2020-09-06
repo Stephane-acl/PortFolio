@@ -1,0 +1,851 @@
+@import "vars";
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+//INDEX ADMIN MOBILE VIEW
+
+.index-admin {
+    display: flex;
+    height: auto;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+
+    .links-container-left-desktop {
+        display: none;
+    }
+
+    .links-container-top-mobile {
+        background-color: $primarycolor;
+        font-size: 1.2em;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+
+        .title-admin {
+            font-weight: 700;
+            font-style: oblique;
+            padding: 10px;
+            font-size: 27px;
+            margin-bottom: 0;
+        }
+
+        .admin-button {
+            color: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            font-weight: 700;
+            font-style: oblique;
+            padding: 10px;
+            font-size: 20px;
+            width: 100%;
+        }
+
+        .button-hover:hover {
+            background: #2d2b2b;
+            cursor: pointer;
+        }
+
+        .button-logout {
+            background: $white;
+            color: #262424;
+            width: 60%;
+            margin: 10px auto 10px auto;
+            height: auto;
+            transition: 0.25s;
+            cursor: pointer;
+
+
+            &:hover {
+                transition: 0.25s;
+                background-color: #d21b33;
+            }
+        }
+
+        .button-new-project {
+            width: 60%;
+            margin: 10px auto 10px auto;
+            height: auto;
+            border: solid $white 3px;
+            cursor: pointer;
+            text-align: center;
+
+            &:hover {
+                transition: 0.25s;
+                background-color: darkgoldenrod;
+                border: solid darkgoldenrod 3px;
+            }
+        }
+
+        .button-back {
+            width: 60%;
+            margin: 10px auto 10px auto;
+            height: auto;
+            border: solid white 3px;
+            cursor: pointer;
+
+            &:hover {
+                transition: 0.25s;
+                background-color: pink;
+                border: solid pink 3px;
+            }
+        }
+
+    }
+
+    .container-right {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: auto;
+
+        .empty-message {
+            font-weight: 700;
+            font-size: 22px;
+            height: 350px;
+            color: red;
+        }
+
+        .container-card-user {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: $primarycolor;
+            margin-bottom: 20px;
+
+            .image-user {
+                display: flex;
+                justify-content: center;
+                background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)), url(../../public/img/cloud.jpg);
+
+                img {
+                    width: 55%;
+                    object-fit: cover;
+                }
+            }
+
+            .infos-user {
+                display: flex;
+                align-items: center;
+                color: white;
+                justify-content: center;
+                font-weight: 700;
+                font-style: oblique;
+                font-family: "Montserrat", sans-serif;
+                font-size: 16px;
+                margin: 15px 0;
+
+                ul {
+                    width: 100%;
+                    word-break: break-all;
+                    list-style-type: none;
+
+                    li {
+                        margin: 5px;
+
+                        span {
+                            color: darkgoldenrod;
+                            font-weight: 700;
+                        }
+                    }
+                }
+                .infos-message div {
+                    margin: 0 10px;
+
+                    span {
+                        color: darkgoldenrod;
+                    }
+                }
+
+                .contact-message {
+                    width: 80%;
+                    align-items: center;
+                    height: 250px;
+                    color: black;
+                    background-color: white;
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-top: 25px;
+                    word-break: break-all;
+                    overflow-x: auto;
+                    padding: 25px;
+                }
+            }
+
+            .container-button-edit-delete-user {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 30px;
+
+                .btn-edit-user {
+                    border: 2px solid white;
+                    color: white;
+                    padding: 10px 15px 10px 15px;
+                    font-style: oblique;
+                    font-weight: 600;
+                    cursor: pointer;
+                    margin-right: 20px;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: white;
+                        color: black;
+                        border: 2px solid white;
+                    }
+                }
+
+                .btn-delete-user {
+                    border: 2px solid red;
+                    cursor: pointer;
+                    background-color: red;
+
+                    &:hover {
+                        background-color: darkred;
+                        border: 2px solid darkred;
+                    }
+                }
+            }
+        }
+
+
+        .add {
+            background: none;
+            color: $black;
+            border: solid 3px $black;
+            font-style: oblique;
+            padding: 5px 30px;
+            font-weight: 600;
+            transition: 0.25s;
+            text-decoration: none;
+            margin-bottom: 35px;
+
+            &:hover {
+                background: $black;
+                color: $white;
+                transition: 0.25s;
+            }
+        }
+
+        .button-back-home-mobile {
+            background: none;
+            color: $black;
+            border: solid 3px $black;
+            font-style: oblique;
+            padding: 5px 30px;
+            font-weight: 600;
+            transition: 0.25s;
+            text-decoration: none;
+            margin-bottom: 35px;
+
+            &:hover {
+                background: $black;
+                color: $white;
+                transition: 0.25s;
+            }
+        }
+
+        .button-back-home {
+            display: none;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-style: oblique;
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .container-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid lightgray;
+            margin-right: auto;
+            margin-left: auto;
+            width: 70%;
+            background-color: $primarycolor;
+            margin-bottom: 50px;
+
+            .container-photo-project {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: white;
+                justify-content: center;
+                font-weight: 700;
+                font-style: oblique;
+                font-family: "Montserrat", sans-serif;
+                font-size: 17px;
+                margin: 20px;
+            }
+
+            .image {
+                margin: 15px 25px;
+                display: flex;
+                justify-content: center;
+
+                img {
+                    height: 60px;
+                    width: 60px;
+                    object-fit: cover;
+                }
+            }
+
+            .image-project {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    height: 190px;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            //Effects on the images
+            .zoom img {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+            }
+
+            .zoom:hover img {
+                -webkit-transform: scale(1.02);
+                transform: scale(1.02);
+            }
+
+            .effect {
+                background: white;
+            }
+
+            .effect img {
+                opacity: 1;
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+            }
+
+            .effect:hover img {
+                opacity: .5;
+            }
+
+            .image-project:hover .btn-see-hover {
+                display: block;
+                opacity: 1;
+            }
+
+            .btn-see-hover:hover {
+                background-color: white;
+                border: 1px solid $primarycolor;
+                color: $primarycolor;
+            }
+
+            .btn-see {
+                padding: 10px 25px;
+                background-color: $primarycolor;
+                color: white;
+                text-decoration: none;
+                text-align: center;
+                transition: all 0.2s ease-in-out;
+                border: 1px solid transparent;
+                font-family: $textfont;
+                font-weight: 700;
+                font-style: oblique;
+                font-size: 17px;
+                position: absolute;
+                cursor: pointer;
+            }
+
+            .btn-see-hover {
+                opacity: 0;
+                transition: all 0.2s ease-in-out;
+                position: absolute;
+            }
+
+            /* End of effects*/
+
+            .title {
+                display: flex;
+                align-items: center;
+                color: white;
+                width: auto;
+                justify-content: center;
+                font-weight: 700;
+                font-style: oblique;
+                font-family: $textfont;
+                margin: 15px;
+            }
+
+            .container-button-edit-delete {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                width: auto;
+                justify-content: center;
+                margin-bottom: 15px;
+
+                .btn-edit {
+                    border: 2px solid white;
+                    color: white;
+                    padding: 10px 15px 10px 15px;
+                    font-style: oblique;
+                    font-weight: 600;
+                    cursor: pointer;
+                    margin-right: 20px;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: white;
+                        color: black;
+                        border: none;
+                    }
+                }
+
+                .btn-delete {
+                    border: 2px solid red;
+                    cursor: pointer;
+                    background-color: red;
+
+                    &:hover {
+                        background-color: darkred;
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//INDEX ADMIN DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    .index-admin {
+        display: flex;
+        height: auto;
+        width: 100%;
+        background: white;
+        flex-direction: row;
+
+        .links-container-top-mobile {
+            display: none;
+        }
+
+        .links-container-left-desktop {
+            background-color: $primarycolor;
+            font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100%;
+            width: 20%;
+            justify-content: flex-start;
+
+            .title-admin {
+                background: darkgoldenrod;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 700;
+                font-style: oblique;
+                padding: 10px;
+                font-size: 30px;
+                margin-bottom: 0;
+            }
+
+            .admin-button {
+                color: $white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 70px;
+                font-weight: 700;
+                font-style: oblique;
+                padding: 10px;
+                font-size: 20px;
+            }
+
+            .button-hover:hover {
+                background: #2d2b2b;
+                cursor: pointer;
+            }
+
+            .container-button-left {
+                position: absolute;
+                bottom: 10px;
+                width: 100%;
+
+                .button-logout {
+                    background: $white;
+                    color: #262424;
+                    width: 60%;
+                    margin: 10px auto 10px auto;
+                    height: auto;
+                    transition: 0.25s;
+                    cursor: pointer;
+
+
+                    &:hover {
+                        transition: 0.25s;
+                        background-color: #d21b33;
+                    }
+                }
+
+                .button-new-project {
+                    width: 60%;
+                    margin: 10px auto 10px auto;
+                    height: auto;
+                    border: solid $white 3px;
+                    cursor: pointer;
+                    text-align: center;
+
+                    &:hover {
+                        transition: 0.25s;
+                        background-color: darkgoldenrod;
+                        border: solid darkgoldenrod 3px;
+                    }
+                }
+            }
+        }
+
+        .container-right {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 80%;
+            right: 0;
+            overflow-x: auto;
+
+            .empty-message {
+                font-weight: 700;
+                font-size: 45px;
+                height: 500px;
+                color: red;
+            }
+
+            .container-card-user {
+                display: flex;
+                flex-direction: column;
+                margin-left: auto;
+                margin-right: auto;
+                width: 65%;
+                background-color: #1400c1;
+
+                .image-user {
+                    display: flex;
+                    justify-content: center;
+                    background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)), url(../../public/img/cloud.jpg);
+
+                    img {
+                        width: 40%;
+                        object-fit: cover;
+                    }
+                }
+
+                .infos-user {
+                    display: flex;
+                    align-items: center;
+                    color: white;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-style: oblique;
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 20px;
+                    margin: 15px 0;
+
+                    ul {
+                        width: 100%;
+                        word-break: break-all;
+                        list-style-type: none;
+
+                        li {
+                            margin: 5px;
+
+                            span {
+                                color: darkgoldenrod;
+                                font-weight: 700;
+                            }
+                        }
+                    }
+
+                    .infos-message div {
+                        margin: 0 20px;
+
+                        span {
+                            color: darkgoldenrod;
+                        }
+                    }
+
+                    .contact-message {
+                        width: 80%;
+                        align-items: center;
+                        height: 250px;
+                        color: black;
+                        background-color: white;
+                        margin-right: auto;
+                        margin-left: auto;
+                        margin-top: 25px;
+                        word-break: break-all;
+                        overflow-x: auto;
+                        padding: 25px;
+                    }
+                }
+
+                .container-button-edit-delete-user {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    justify-content: center;
+                    margin-bottom: 30px;
+
+                    .btn-edit-user {
+                        border: 2px solid white;
+                        color: white;
+                        padding: 10px 15px 10px 15px;
+                        font-style: oblique;
+                        font-weight: 600;
+                        cursor: pointer;
+                        margin-right: 20px;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: white;
+                            color: black;
+                            border: 2px solid white;
+                        }
+                    }
+
+                    .btn-delete-user {
+                        border: 2px solid red;
+                        cursor: pointer;
+                        background-color: red;
+
+                        &:hover {
+                            background-color: darkred;
+                            border: 2px solid darkred;
+                        }
+                    }
+                }
+            }
+
+            .add {
+                background: none;
+                color: $black;
+                border: solid 3px $black;
+                font-style: oblique;
+                padding: 5px 30px;
+                font-weight: 600;
+                transition: 0.25s;
+                text-decoration: none;
+
+                &:hover {
+                    background: $black;
+                    color: $white;
+                    transition: 0.25s;
+                }
+            }
+
+            .button-back-home-mobile {
+                display: none;
+            }
+
+            .button-back-home {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                color: $black;
+                border: solid 3px $black;
+                font-style: oblique;
+                padding: 0 30px;
+                font-weight: 600;
+                transition: 0.25s;
+                display: block;
+                text-decoration: none;
+
+                &:hover {
+                    background: $black;
+                    color: $white;
+                    transition: 0.25s;
+                }
+            }
+
+            h1 {
+                font-style: oblique;
+                font-weight: 700;
+                margin-top: 25px;
+                margin-bottom: 25px;
+                font-size: 45px;
+            }
+
+            .container-card {
+                display: flex;
+                flex-direction: row;
+                border: 1px solid lightgray;
+                margin-left: auto;
+                margin-right: auto;
+                width: 65%;
+                background-color: $primarycolor;
+                box-shadow: 2px 3px lightgrey;
+                border-radius: 0 10px 10px 0;
+                margin-bottom: 35px;
+
+                .container-photo-project {
+                    display: flex;
+                    flex-direction: column;
+                    color: white;
+                    width: 75%;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-style: oblique;
+                    font-family: "Montserrat", sans-serif;
+                    margin-left: 35px;
+                    font-size: 20px;
+                    align-items: baseline;
+                }
+
+                .image {
+                    margin: 10px 25px;
+
+                    img {
+                        height: 60px;
+                        width: 60px;
+                        object-fit: cover;
+                    }
+                }
+
+                .image-project {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        height: 130px;
+                        width: auto;
+                    }
+                }
+
+                //Effects on the images
+                .zoom img {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                    -webkit-transition: .3s ease-in-out;
+                    transition: .3s ease-in-out;
+                }
+
+                .zoom:hover img {
+                    -webkit-transform: scale(1.02);
+                    transform: scale(1.02);
+                }
+
+                .effect {
+                    background: white;
+                }
+
+                .effect img {
+                    opacity: 1;
+                    -webkit-transition: .3s ease-in-out;
+                    transition: .3s ease-in-out;
+                }
+
+                .effect:hover img {
+                    opacity: .5;
+                }
+
+                .image-project:hover .btn-see-hover {
+                    display: block;
+                    opacity: 1;
+                }
+
+                .btn-see-hover:hover {
+                    background-color: white;
+                    border: 1px solid $primarycolor;
+                    color: $primarycolor;
+                }
+
+                .btn-see {
+                    padding: 10px 25px;
+                    background-color: $primarycolor;
+                    color: white;
+                    text-decoration: none;
+                    text-align: center;
+                    transition: all 0.2s ease-in-out;
+                    border: 1px solid transparent;
+                    font-family: $textfont;
+                    font-weight: 700;
+                    font-style: oblique;
+                    font-size: 17px;
+                    position: absolute;
+                    cursor: pointer;
+                }
+
+                .btn-see-hover {
+                    opacity: 0;
+                    transition: all 0.2s ease-in-out;
+                    position: absolute;
+                }
+
+                /* End of effects*/
+
+                .title {
+                    display: flex;
+                    align-items: center;
+                    color: white;
+                    width: 75%;
+                    justify-content: flex-start;
+                    font-weight: 700;
+                    font-style: oblique;
+                    font-family: $textfont;
+                    margin-left: 35px;
+                    font-size: 24px;
+                }
+
+                .container-button-edit-delete {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    width: 25%;
+                    justify-content: center;
+                    margin-bottom: 0;
+                    margin-right: 15px;
+
+                    .btn-edit {
+                        border: 2px solid white;
+                        color: white;
+                        padding: 10px 15px 10px 15px;
+                        font-style: oblique;
+                        font-weight: 600;
+                        cursor: pointer;
+                        margin-right: 20px;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: white;
+                            color: black;
+                            border: none;
+                        }
+                    }
+
+                    .btn-delete {
+                        border: 2px solid red;
+                        cursor: pointer;
+                        background-color: red;
+
+                        &:hover {
+                            background-color: darkred;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
