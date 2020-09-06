@@ -43,6 +43,10 @@
                         {{ include('admin/project/_delete_form.html.twig') }}
                     </div>
                 </div>
+                {% else %}
+                <div class="d-flex justify-content-center align-items-center empty-message">
+                    AUCUN PROJETS
+                </div>
             {% endfor %}
         </div>
     </main>
