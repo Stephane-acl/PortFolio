@@ -3,18 +3,25 @@
 {% block title %}Clients index{% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-    <h1 class="text-center">Liste des Clients</h1>
+    <main class="index-admin">
+        {% include 'admin/_menu-admin.html.twig' %}
+        <div class="container-right">
+            <h1 class="text-center">Liste des Clients</h1>
 
-
-                    {% for client in clients %}
-
-                            {{ client.id }}
-                            {{ client.name }}
-
-                                <a href="{{ path('admin_client_edit', {'id': client.id}) }}">editer</a>
-
-                    {% endfor %}
-
-    <a href="{{ path('admin_client_new') }}">Créer un nouveau client</a><br />
-    <a href="{{ path('admin_project_index') }}">Retour</a>
+            {% for client in clients %}
+                <div class="container-card">
+                    <div class="title">{{ client.name }}</div>
+                    <div class="container-button-edit-delete">
+                        <a class="btn-edit" href="{{ path('admin_client_edit', {'id': client.id}) }}">editer</a>
+                        {{ include('admin/client/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <a class="add" href="{{ path('admin_client_new') }}">Ajouter un client</a><br/>
+                <a class="button-back-home-mobile" href="{{ path('admin_project_index') }}">Retour</a>
+                <a class="button-back-home" href="{{ path('admin_project_index') }}">Retour</a>
+            </div>
+        </div>
+    </main>
 {% endblock %}
