@@ -100,6 +100,13 @@
         height: auto;
         width: auto;
 
+        .empty-message {
+            font-weight: 700;
+            font-size: 22px;
+            height: 350px;
+            color: red;
+        }
+
         .container-card-user {
             display: flex;
             flex-direction: column;
@@ -110,7 +117,7 @@
             .image-user {
                 display: flex;
                 justify-content: center;
-                background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../../public/img/cloud.jpg);
+                background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)), url(../../public/img/cloud.jpg);
 
                 img {
                     width: 55%;
@@ -127,7 +134,7 @@
                 font-style: oblique;
                 font-family: "Montserrat", sans-serif;
                 font-size: 16px;
-                margin: 15px 15px 15px 0;
+                margin: 15px 0;
 
                 ul {
                     width: 100%;
@@ -142,6 +149,27 @@
                             font-weight: 700;
                         }
                     }
+                }
+                .infos-message div {
+                    margin: 0 10px;
+
+                    span {
+                        color: darkgoldenrod;
+                    }
+                }
+
+                .contact-message {
+                    width: 80%;
+                    align-items: center;
+                    height: 250px;
+                    color: black;
+                    background-color: white;
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-top: 25px;
+                    word-break: break-all;
+                    overflow-x: auto;
+                    padding: 25px;
                 }
             }
 
@@ -495,6 +523,13 @@
             right: 0;
             overflow-x: auto;
 
+            .empty-message {
+                font-weight: 700;
+                font-size: 45px;
+                height: 500px;
+                color: red;
+            }
+
             .container-card-user {
                 display: flex;
                 flex-direction: column;
@@ -506,7 +541,7 @@
                 .image-user {
                     display: flex;
                     justify-content: center;
-                    background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../../public/img/cloud.jpg);
+                    background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0)), url(../../public/img/cloud.jpg);
 
                     img {
                         width: 40%;
@@ -523,7 +558,7 @@
                     font-style: oblique;
                     font-family: "Montserrat", sans-serif;
                     font-size: 20px;
-                    margin: 15px 15px 15px 0;
+                    margin: 15px 0;
 
                     ul {
                         width: 100%;
@@ -538,6 +573,28 @@
                                 font-weight: 700;
                             }
                         }
+                    }
+
+                    .infos-message div {
+                        margin: 0 20px;
+
+                        span {
+                            color: darkgoldenrod;
+                        }
+                    }
+
+                    .contact-message {
+                        width: 80%;
+                        align-items: center;
+                        height: 250px;
+                        color: black;
+                        background-color: white;
+                        margin-right: auto;
+                        margin-left: auto;
+                        margin-top: 25px;
+                        word-break: break-all;
+                        overflow-x: auto;
+                        padding: 25px;
                     }
                 }
 

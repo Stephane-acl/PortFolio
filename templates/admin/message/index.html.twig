@@ -3,42 +3,35 @@
 {% block title %}Messages index{% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-    <h1 class="text-center">Liste des Messages</h1>
-
-    <div class="container h-100">
-        <div class="row h-100 justify-content-center align-items-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Messages</th>
-                        <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for message in messages %}
-                        <tr>
-                            <td>{{ message.id }}</td>
-                            <td>{{ message.name }}</td>
-                            <td>{{ message.email }}</td>
-                            <td>{{ message.message }}</td>
-                            <td>
-                                <a href="{{ path('admin_message_show', {'id': message.id}) }}">Voir</a>
-                                {{ include('admin/message/_delete_form.html.twig') }}
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="3">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    <main class="index-admin">
+        {% include 'admin/_menu-admin.html.twig' %}
+        <div class="container-right">
+            <h1 class="text-center">Liste des Messages</h1>
+            {% for message in messages %}
+                <div class="container-card-user">
+                    <div class="infos-user flex-column">
+                        <div class="d-flex infos-message">
+                            <div><span>Id:</span> {{ message.id }}</div>
+                            <div><span>Nom:</span> {{ message.name }}</div>
+                            <div><span>Email:</span> {{ message.email }}</div>
+                        </div>
+                        <div class="contact-message d-flex flex-column align-items-center">
+                            <p>Message:</p> {{ message.message }}
+                        </div>
+                    </div>
+                    <div class="container-button-edit-delete-user">
+                        {{ include('admin/message/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="d-flex justify-content-center align-items-center empty-message">
+                    AUCUN MESSAGES MONSIEUR
+                </div>
+            {% endfor %}
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <a class="button-back-home-mobile" href="{{ path('admin_project_index') }}">Retour</a>
+                <a class="button-back-home" href="{{ path('admin_project_index') }}">Retour</a>
             </div>
         </div>
-    </div>
-    <a href="{{ path('admin_project_index') }}">Retour</a>
+    </main>
 {% endblock %}

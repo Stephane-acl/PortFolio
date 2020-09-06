@@ -243,18 +243,6 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/picture/{id}", name="picture_show", methods={"GET"})
-     * @param Picture $picture
-     * @return Response
-     */
-    public function showPicture(Picture $picture): Response
-    {
-        return $this->render('admin/picture/show.html.twig', [
-            'picture' => $picture,
-        ]);
-    }
-
-    /**
      * @Route("/picture/{id}/edit", name="picture_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Picture $picture
@@ -398,19 +386,6 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/message/{id}", name="message_show", methods={"GET"})
-     * @param Message $message
-     * @return Response
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function showMessage(Message $message): Response
-    {
-        return $this->render('admin/message/show.html.twig', [
-            'message' => $message,
-        ]);
-    }
-
-    /**
      * @Route("/message/{id}", name="message_delete", methods={"DELETE"})
      * @param Request $request
      * @param Message $message
@@ -441,19 +416,6 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/user/{id}", name="user_show", methods={"GET"})
-     * @param User $user
-     * @return Response
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function showUser(User $user): Response
-    {
-        return $this->render('admin/user/show.html.twig', [
-            'user' => $user,
         ]);
     }
 
