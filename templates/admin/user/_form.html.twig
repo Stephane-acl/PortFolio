@@ -1,4 +1,8 @@
 {{ form_start(form) }}
- {{ form_widget(form) }}
-<button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
+            {{ form_widget(form) }}
+<div class="d-flex justify-content-between">
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+    {{ form_end(form) }}
+    <a class="btn btn-warning" href="{{ path('admin_user_index') }}">Retour</a>
+</div>
 {{ form_end(form) }}

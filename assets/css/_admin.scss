@@ -100,6 +100,89 @@
         height: auto;
         width: auto;
 
+        .container-card-user {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: $primarycolor;
+            margin-bottom: 20px;
+
+            .image-user {
+                display: flex;
+                justify-content: center;
+                background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../../public/img/cloud.jpg);
+
+                img {
+                    width: 55%;
+                    object-fit: cover;
+                }
+            }
+
+            .infos-user {
+                display: flex;
+                align-items: center;
+                color: white;
+                justify-content: center;
+                font-weight: 700;
+                font-style: oblique;
+                font-family: "Montserrat", sans-serif;
+                font-size: 16px;
+                margin: 15px 15px 15px 0;
+
+                ul {
+                    width: 100%;
+                    word-break: break-all;
+                    list-style-type: none;
+
+                    li {
+                        margin: 5px;
+
+                        span {
+                            color: darkgoldenrod;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+
+            .container-button-edit-delete-user {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 30px;
+
+                .btn-edit-user {
+                    border: 2px solid white;
+                    color: white;
+                    padding: 10px 15px 10px 15px;
+                    font-style: oblique;
+                    font-weight: 600;
+                    cursor: pointer;
+                    margin-right: 20px;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: white;
+                        color: black;
+                        border: 2px solid white;
+                    }
+                }
+
+                .btn-delete-user {
+                    border: 2px solid red;
+                    cursor: pointer;
+                    background-color: red;
+
+                    &:hover {
+                        background-color: darkred;
+                        border: 2px solid darkred;
+                    }
+                }
+            }
+        }
+
+
         .add {
             background: none;
             color: $black;
@@ -411,6 +494,89 @@
             width: 80%;
             right: 0;
             overflow-x: auto;
+
+            .container-card-user {
+                display: flex;
+                flex-direction: column;
+                margin-left: auto;
+                margin-right: auto;
+                width: 65%;
+                background-color: #1400c1;
+
+                .image-user {
+                    display: flex;
+                    justify-content: center;
+                    background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../../public/img/cloud.jpg);
+
+                    img {
+                        width: 40%;
+                        object-fit: cover;
+                    }
+                }
+
+                .infos-user {
+                    display: flex;
+                    align-items: center;
+                    color: white;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-style: oblique;
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 20px;
+                    margin: 15px 15px 15px 0;
+
+                    ul {
+                        width: 100%;
+                        word-break: break-all;
+                        list-style-type: none;
+
+                        li {
+                            margin: 5px;
+
+                            span {
+                                color: darkgoldenrod;
+                                font-weight: 700;
+                            }
+                        }
+                    }
+                }
+
+                .container-button-edit-delete-user {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    justify-content: center;
+                    margin-bottom: 30px;
+
+                    .btn-edit-user {
+                        border: 2px solid white;
+                        color: white;
+                        padding: 10px 15px 10px 15px;
+                        font-style: oblique;
+                        font-weight: 600;
+                        cursor: pointer;
+                        margin-right: 20px;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: white;
+                            color: black;
+                            border: 2px solid white;
+                        }
+                    }
+
+                    .btn-delete-user {
+                        border: 2px solid red;
+                        cursor: pointer;
+                        background-color: red;
+
+                        &:hover {
+                            background-color: darkred;
+                            border: 2px solid darkred;
+                        }
+                    }
+                }
+            }
 
             .add {
                 background: none;
