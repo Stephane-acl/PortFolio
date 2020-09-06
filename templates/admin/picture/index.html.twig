@@ -3,39 +3,32 @@
 {% block title %}Pictures index{% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-    <div class="container h-100">
-        <div class="row h-100 justify-content-center align-items-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <h1 class="text-center">Liste des Photos</h1>
+    <main class="index-admin">
+        {% include 'admin/_menu-admin.html.twig' %}
+        <div class="container-right">
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for picture in pictures %}
-                        <tr>
-                            <td>{{ picture.id }}</td>
-                            <td>{{ picture.name }}</td>
-                            <td>
-                                <a href="{{ path('admin_picture_show', {'id': picture.id}) }}">Voir</a>
-                                <a href="{{ path('admin_picture_edit', {'id': picture.id}) }}">Editer</a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="3">no records found</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+            <h1 class="text-center">Liste des Photos</h1>
+
+            {% for picture in pictures %}
+                <div class="container-card">
+                    <div class="image-project">
+                        <img src="{{ vich_uploader_asset(picture, 'pictureFile') }}" alt="{{ picture.name }}"/>
+                    </div>
+                    <div class="container-photo-project">
+                        <span> Url : {{ picture.name }}</span>
+                        <span>Projet : {{ picture.project.name }}</span>
+                    </div>
+                    <div class="container-button-edit-delete">
+                        <a class="btn-edit" href="{{ path('admin_picture_edit', {'id': picture.id}) }}">Editer</a>
+                        {{ include('admin/picture/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <a class="add" href="{{ path('admin_picture_new') }}">Ajouter une photo</a>
+                <a class="button-back-home-mobile" href="{{ path('admin_project_index') }}">Retour</a>
+                <a class="button-back-home" href="{{ path('admin_project_index') }}">Retour</a>
             </div>
         </div>
-    </div>
-    <a href="{{ path('admin_picture_new') }}">Créer une nouvelle photo</a><br />
-    <a href="{{ path('admin_project_index') }}">Retour</a>
+    </main>
 {% endblock %}

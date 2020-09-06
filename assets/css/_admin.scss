@@ -26,6 +26,7 @@
             font-style: oblique;
             padding: 10px;
             font-size: 27px;
+            margin-bottom: 0;
         }
 
         .admin-button {
@@ -156,6 +157,19 @@
             width: 70%;
             background-color: $primarycolor;
             margin-bottom: 50px;
+
+            .container-photo-project {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: white;
+                justify-content: center;
+                font-weight: 700;
+                font-style: oblique;
+                font-family: "Montserrat", sans-serif;
+                font-size: 17px;
+                margin: 20px;
+            }
 
             .image {
                 margin: 15px 25px;
@@ -332,6 +346,7 @@
                 font-style: oblique;
                 padding: 10px;
                 font-size: 30px;
+                margin-bottom: 0;
             }
 
             .admin-button {
@@ -392,12 +407,10 @@
         .container-right {
             display: flex;
             flex-direction: column;
-            position: fixed;
-            height: 100%;
+            position: absolute;
             width: 80%;
             right: 0;
             overflow-x: auto;
-            justify-content: space-around;
 
             .add {
                 background: none;
@@ -459,14 +472,28 @@
                 background-color: $primarycolor;
                 box-shadow: 2px 3px lightgrey;
                 border-radius: 0 10px 10px 0;
-                margin-bottom: 0;
+                margin-bottom: 35px;
+
+                .container-photo-project {
+                    display: flex;
+                    flex-direction: column;
+                    color: white;
+                    width: 75%;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-style: oblique;
+                    font-family: "Montserrat", sans-serif;
+                    margin-left: 35px;
+                    font-size: 20px;
+                    align-items: baseline;
+                }
 
                 .image {
                     margin: 10px 25px;
 
                     img {
-                        height: 45px;
-                        width: 45px;
+                        height: 60px;
+                        width: 60px;
                         object-fit: cover;
                     }
                 }
@@ -555,6 +582,7 @@
                     font-style: oblique;
                     font-family: $textfont;
                     margin-left: 35px;
+                    font-size: 24px;
                 }
 
                 .container-button-edit-delete {
