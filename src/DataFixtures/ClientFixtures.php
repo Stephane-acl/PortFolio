@@ -10,18 +10,20 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 class ClientFixtures extends Fixture
 {
     const CLIENTS = [
-        'La Wild Code School',
-        'Doctolib',
-        'The Greener Good',
+        'La Wild Code School' => ['picture' => 'wild.png'],
+        'Doctolib' => ['picture' => 'doctolib.png'],
+        'The Greener Good' => ['picture' => 'tgg.png']
     ];
 
     public function load(ObjectManager $manager)
     {
-        foreach (self::CLIENTS as $key => $name) {
+        $i = 0;
+        foreach (self::CLIENTS as $key => $data) {
             $client = new Client();
-            $client ->setName($name);
-            $manager->persist($client );
-            $this->addReference('client_' . $key, $client);
+            $client->setName($key);
+            $client->setPicture($data['picture']);
+            $manager->persist($client);
+            $this->addReference('client_' . $i++, $client);
         }
         $manager->flush();
     }

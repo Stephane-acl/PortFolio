@@ -27,7 +27,7 @@
                     {% else %}
                         <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}" alt="image du projet" />
                     {% endif %}
-                    <a class="button button-on-hover" href="{{ path('project_show', {'slug':project.slug}) }}">
+                    <a class="button button-on-hover" href="{{ path('app_project_show', {'slug':project.slug}) }}">
                         {{ project.name }}
                     </a>
                 </div>

@@ -1,8 +1,6 @@
-// Fonts
-$titlefont: 'Fira Sans', sans-serif;
-$textfont: 'Montserrat', sans-serif;
-//Color
-$primarycolor: #1400c1;
+@import "vars";
+@import "admin";
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 html {
     scroll-behavior: smooth;
@@ -638,270 +636,6 @@ nav {
     }
 }
 
-//INDEX ADMIN MOBILE VIEW
-
-.title-admin {
-    margin-top: 40px;
-}
-
-.index-admin {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-
-    .links-container {
-        background-color: $primarycolor;
-        box-shadow: 0 2px 5px #1c1a19;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 1.1em;
-        display: flex;
-        flex-direction: column;
-
-        img {
-            height: 80px;
-            margin: 10px;
-        }
-
-        .admin-btn-menu {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-self: center;
-            margin-top: 10px;
-        }
-
-        a {
-            color: white;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 20px 30px 0 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            li {
-                margin-bottom: 15px;
-            }
-        }
-    }
-
-    .table-project {
-
-        thead {
-            background-color: $primarycolor;
-            color: white;
-            text-align: center;
-        }
-
-        .id-project {
-            font-weight: bold;;
-        }
-
-        .container-btn {
-            display: flex;
-            flex-direction: column;
-
-            .btn-see {
-                background-color: white;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                margin-bottom: 15px;
-                width: 100%;
-                color: $primarycolor;
-                text-align: center;
-            }
-
-            .btn-see:hover {
-                background-color: $primarycolor;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                color: white;
-                text-decoration: none;
-            }
-
-            .btn-edit {
-                background-color: $primarycolor;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                width: 100%;
-                color: white;
-                text-decoration: none;
-                text-align: center;
-            }
-
-            .btn-edit:hover {
-                background-color: white;
-                border: 1px solid $primarycolor;
-                border-radius: 5px;
-                padding: 5px 15px 5px 15px;
-                color: $primarycolor;
-                text-decoration: none;
-            }
-        }
-    }
-}
-
-//INDEX ADMIN DESKTOP VIEW
-
-@media all and (min-width: 769px) {
-
-    .title-admin {
-        margin-top: 40px;
-    }
-
-    .index-admin {
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        margin: 30px auto 40px;
-
-        .links-container {
-            background-color: $primarycolor;
-            margin-top: 1px;
-            box-shadow: none;
-            border-radius: 0;
-            padding: 10px;
-            font-size: 1.2em;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-
-            img {
-                height: 100px;
-                margin: 10px;
-            }
-
-            .admin-btn-menu {
-                position: absolute;
-                bottom: 15px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                align-self: center;
-            }
-
-            a {
-                color: white;
-            }
-
-            ul {
-                list-style-type: none;
-                padding: 60px 30px 0 30px;
-                width: max-content;
-
-                li {
-                    margin-bottom: 20px;
-                }
-            }
-        }
-
-        .table-project {
-            width: 85%;
-
-            thead {
-                background-color: $primarycolor;
-                color: white;
-                text-align: center;
-            }
-
-            .id-project {
-                font-weight: bold;;
-            }
-
-            .container-btn {
-                display: flex;
-                flex-direction: column;
-
-                .btn-see {
-                    background-color: white;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-                    margin-bottom: 15px;
-                    width: 100%;
-
-                    a {
-                        color: $primarycolor;
-                        text-decoration: none;
-                    }
-                }
-
-                .btn-see:hover {
-                    background-color: $primarycolor;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-
-                    a {
-                        color: white;
-                        text-decoration: none;
-                    }
-                }
-
-                .btn-edit {
-                    background-color: $primarycolor;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-                    width: 100%;
-
-                    a {
-                        color: white;
-                        text-decoration: none;
-                    }
-                }
-
-                .btn-edit:hover {
-                    background-color: white;
-                    border: 1px solid $primarycolor;
-                    border-radius: 5px;
-                    padding: 5px 15px 5px 15px;
-
-                    a {
-                        color: $primarycolor;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-    }
-}
-
-//ADMIN TAB MOBILE VIEW
-
-@media screen and (max-width: 769px) {
-    table {
-        display: flex;
-    }
-    thead {
-        width: 20%;
-        min-width: 90px;
-    }
-    tbody {
-        flex: 1;
-    }
-    tr {
-        display: flex;
-        flex-direction: column;
-    }
-    th, td {
-        text-align: left;
-        border-right: 0;
-        border-bottom: 1px solid black;
-    }
-}
-
-@media screen and (max-width: 461px) {
-    tbody tr:not(:first-child) td::before {
-        margin-left: -95px;
-    }
-}
 
 //CONTACT FORM MOBILE VIEW
 
@@ -1001,7 +735,6 @@ nav {
     }
 }
 
-
 // MESSAGE FLASH MOBILE VIEW
 
 .alert {
@@ -1035,4 +768,114 @@ nav {
     }
 }
 
-@import "~bootstrap/scss/bootstrap";
+// ADMIN EDIT PROJECT FORM MOBILE VIEW
+
+.form-edit {
+    background-color: #f2f2f2;
+    padding: 30px;
+    font-weight: 600;
+    font-family: $textfont;
+
+    h1 {
+        font-family: $textfont;
+        font-size: 1.8rem;
+        font-style: oblique;
+        font-weight: 700;
+    }
+
+    input, textarea, select {
+        box-shadow: 2px 3px 6px lightgrey;
+        border-radius: 10px;
+    }
+
+    input[type=checkbox] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+    }
+
+    input[type=checkbox] {
+        border-radius: 4px;
+        height: 15px;
+        width: 15px;
+        background: #fff;
+    }
+
+    input[type="checkbox"]:checked {
+        background: yellow;
+        position: relative;
+
+        &:before {
+            font-family: $titlefont;
+            content: '\f00c';
+            display: block;
+            color: grey;
+            font-size: 13px;
+            position: absolute;
+        }
+    }
+
+    .btn {
+        font-size: 13px;
+    }
+}
+
+// ADMIN EDIT PROJECT FORM DESKTOP VIEW
+@media all and (min-width: 769px) {
+
+    .form-edit {
+        background-color: #f2f2f2;
+        padding: 30px;
+        font-weight: 600;
+        font-family: $textfont;
+        position: fixed;
+        height: 100%;
+        width: 80%;
+        right: 0;
+
+        h1 {
+            font-family: $textfont;
+            font-size: 2.5rem;
+            font-style: oblique;
+            font-weight: 700;
+        }
+
+        input, textarea, select {
+            box-shadow: 2px 3px 6px lightgrey;
+            border-radius: 10px;
+        }
+
+        input[type=checkbox] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+        }
+
+        input[type=checkbox] {
+            border-radius: 4px;
+            height: 15px;
+            width: 15px;
+            background: #fff;
+        }
+
+        input[type="checkbox"]:checked {
+            background: yellow;
+            position: relative;
+
+            &:before {
+                font-family: $textfont;
+                content: '\f00c';
+                display: block;
+                color: grey;
+                font-size: 13px;
+                position: absolute;
+            }
+        }
+
+        .btn {
+            font-size: 1rem;
+        }
+    }
+}
+
+

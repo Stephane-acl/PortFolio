@@ -27,7 +27,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
              C\'est un projet que j\'aimerais beaucoup retravailler dans le futur.
              Il s\'adresse aux passionnés de jeux vidéos.',
 
-            'link' => '#',
+            'link' => '',
 
             'client' => 'client_0',
         ],
@@ -39,7 +39,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
              Le thème était \"Voyager depuis son canapé\".
              Nous avons utilisé JQuery et PHP pour développer cette application",
 
-            'link' => '#',
+            'link' => '',
 
             'client' => 'client_0',
         ],
@@ -62,7 +62,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
              Nous avons développé cette application à 4 personnes durant un Hackathon organisé par la Wild Code School et DOCTOLIB.
              Nous disposions de 48 heures pour la réalisation du projet et avons utilisé du PHP Symfony et JQuery.",
 
-            'link' => '#',
+            'link' => '',
 
             'client' => 'client_1',
         ],

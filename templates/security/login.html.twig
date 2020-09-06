@@ -6,32 +6,35 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-12 col-md-10 col-lg-8">
-                <form method="post">
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
+                <div class="message">
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
 
-                    <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
-                    <label for="inputUsername">Nom</label>
-                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
-                           class="form-control" required autofocus>
-                    <label for="inputPassword">Mot de passe</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                        <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
+                        <label for="inputUsername">Nom</label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
+                               class="form-control" required autofocus>
+                        <label for="inputPassword">Mot de passe</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" required>
 
-                    <input type="hidden" name="_csrf_token"
-                           value="{{ csrf_token('authenticate') }}">
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
 
-                    <button class="btn btn-primary" style="margin-top: 10px" type="submit">
-                        Connexion
-                    </button>
-
-                    {% if app.user %}
-                        <div class="mb-3">
-                            Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-primary" style="margin-top: 35px" type="submit">
+                                Connexion
+                            </button>
                         </div>
-                    {% endif %}
-
-                </form>
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Vous êtes connecté en tant que {{ app.user.username }}, <a
+                                        href="{{ path('app_logout') }}">Déconnexion</a>
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
         </div>
     </div>

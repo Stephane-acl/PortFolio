@@ -10,7 +10,7 @@
         <ul class="navbar-nav mr-auto"></ul>
         <div class="form-inline my-2 my-lg-0 mobile-nav">
             <a class="nav-link" href="https://www.linkedin.com/in/st%C3%A9phane-acloque-b679751a4/" target="_blank">Linkedin</a>
-            <a class="nav-link" href="{{ path('message_new') }}">Contact</a>
+            <a class="nav-link" href="{{ path('app_message_new') }}">Contact</a>
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="nav-link" href="{{ path("admin_project_index") }}">Admin</a>
             {% endif %}
