@@ -10,6 +10,10 @@
 
             {% for client in clients %}
                 <div class="container-card">
+                    <div class="image">
+                        <img src="{{ vich_uploader_asset(client, 'clientFile') }}"
+                             alt="{{ client.name }}"/>
+                    </div>
                     <div class="title">{{ client.name }}</div>
                     <div class="container-button-edit-delete">
                         <a class="btn-edit" href="{{ path('admin_client_edit', {'id': client.id}) }}">editer</a>
