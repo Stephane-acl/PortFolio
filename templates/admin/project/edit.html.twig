@@ -3,11 +3,11 @@
 {% block title %}Edit Projects{% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-    <main>
+    <main class="index-admin">
+        {% include 'admin/_menu-admin.html.twig' %}
         <div class="form-edit">
             <h1 class="text-center">Editer le Projet</h1>
             {{ include('admin/project/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-            {{ include('admin/project/_delete_form.html.twig') }}
         </div>
     </main>
 {% endblock %}

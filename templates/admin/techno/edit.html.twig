@@ -3,13 +3,13 @@
 {% block title %}Edit Technos{% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-    <h1 class="text-center">Editer les technos</h1>
-
-    {{ include('admin/techno/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-    <a href="{{ path('admin_techno_index') }}">Retour</a>
-
-    {{ include('admin/techno/_delete_form.html.twig') }}
+    <main class="index-admin">
+        {% include 'admin/_menu-admin.html.twig' %}
+        <div class="form-edit">
+            <h1 class="text-center">Editer les technos</h1>
+            {{ include('admin/techno/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
+    </main>
 {% endblock %}
 
 {% block javascripts %}

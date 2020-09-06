@@ -771,20 +771,16 @@ nav {
 // ADMIN EDIT PROJECT FORM MOBILE VIEW
 
 .form-edit {
-    background-color: $primarycolor;
+    background-color: #f2f2f2;
     padding: 30px;
-    color: white;
     font-weight: 600;
     font-family: $textfont;
-    border: 5px solid darkblue;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    overflow-x: auto;
 
     h1 {
         font-family: $textfont;
         font-size: 1.8rem;
+        font-style: oblique;
+        font-weight: 700;
     }
 
     input, textarea, select {
@@ -828,17 +824,20 @@ nav {
 @media all and (min-width: 769px) {
 
     .form-edit {
-        background-color: $primarycolor;
+        background-color: #f2f2f2;
         padding: 30px;
-        color: white;
         font-weight: 600;
         font-family: $textfont;
-        border: 5px solid darkblue;
-        overflow-x: auto;
+        position: fixed;
+        height: 100%;
+        width: 80%;
+        right: 0;
 
         h1 {
             font-family: $textfont;
             font-size: 2.5rem;
+            font-style: oblique;
+            font-weight: 700;
         }
 
         input, textarea, select {

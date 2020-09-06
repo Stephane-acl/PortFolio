@@ -5,103 +5,19 @@
 {% block body %}
 
     <main class="index-admin">
-        <div class="links-container-top-mobile">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="navbar-brand title-admin">Administration</div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                        style="outline-style: none">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        {% include 'admin/_menu-admin.html.twig' %}
+        <div class="container-right">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto"></ul>
-                    <div class="form-inline my-2 my-lg-0 mobile-nav">
-                        <a class="nav-link admin-button button-hover" href="{{ path('admin_client_index') }}">
-                            Gérer les clients
-                        </a>
-
-                        <a class="nav-link admin-button button-hover" href="{{ path('admin_picture_index') }}">
-                            Gérer les photos
-                        </a>
-
-                        <a class="nav-link admin-button button-hover" href="{{ path('admin_techno_index') }}">
-                            Gérer les technos
-                        </a>
-
-                        <a class="nav-link admin-button button-hover" href="{{ path('admin_user_index') }}">
-                            Gérer mon profil
-                        </a>
-
-                        <a class="nav-link admin-button button-hover" href="{{ path('admin_message_index') }}">
-                            Gérer mes messages
-                        </a>
-                        <div class="admin-button button-new-project"
-                             onclick="window.location.href = '{{ path('admin_project_new') }}'">
-                            Nouveau projet
-                        </div>
-
-                        <div class="admin-button button-back"
-                             onclick="window.location.href = '{{ path('app_homeIndex') }}'">
-                            Retour
-                        </div>
-
-                        <div class="admin-button button-logout"
-                             onclick="window.location.href = '{{ path('app_logout') }}'">
-                            Déconnexion
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="links-container-left-desktop">
-            <h1 class="title-admin">Administration</h1>
-
-            <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_client_index') }}'">
-                Gérer les clients
-            </div>
-
-            <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_picture_index') }}'">
-                Gérer les photos
-            </div>
-
-            <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_techno_index') }}'">
-                Gérer les technos
-            </div>
-
-            <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_user_index') }}'">
-                Gérer mon profil
-            </div>
-
-            <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_message_index') }}'">
-                Gérer mes messages
-            </div>
-
-            <div class="container-button-left">
-                <div class="admin-button button-new-project"
-                     onclick="window.location.href = '{{ path('admin_project_new') }}'">
-                    Nouveau projet
-                </div>
-
-                <div class="admin-button button-back" onclick="window.location.href = '{{ path('app_homeIndex') }}'">
-                    Retour
-                </div>
-
-                <div class="admin-button button-logout" onclick="window.location.href = '{{ path('app_logout') }}'">
-                    Déconnexion
-                </div>
-            </div>
-        </div>
-
-        <div class="project-container-right">
+            <button class="button-back-home" type="button"
+                    onclick="window.location.href = '{{ path('app_homeIndex') }}';">
+                Back Home
+            </button>
 
             <h1 class="text-center">Liste des projets</h1>
 
             {% for project in projects %}
 
-                <div class="container-card-project">
+                <div class="container-card">
                     <div class="image-project zoom effect">
                         {% if project.picture[0] is not defined %}
                             <img src=" {{ asset('img/paper.jpeg') }}" alt="Image papier et stylo"/>
@@ -114,11 +30,11 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="title-project">
+                    <div class="title">
                         <h4>{{ project.name }}</h4>
                     </div>
 
-                    <div class="container-button-project">
+                    <div class="container-button-edit-delete">
 
                         <div class="btn-edit"
                              onclick="window.location.href = '{{ path('admin_project_edit', {'slug': project.slug}) }}'">

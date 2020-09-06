@@ -93,11 +93,51 @@
 
     }
 
-    .project-container-right {
+    .container-right {
         display: flex;
         flex-direction: column;
         height: auto;
         width: auto;
+
+        .add {
+            background: none;
+            color: $black;
+            border: solid 3px $black;
+            font-style: oblique;
+            padding: 5px 30px;
+            font-weight: 600;
+            transition: 0.25s;
+            text-decoration: none;
+            margin-bottom: 35px;
+
+            &:hover {
+                background: $black;
+                color: $white;
+                transition: 0.25s;
+            }
+        }
+
+        .button-back-home-mobile {
+            background: none;
+            color: $black;
+            border: solid 3px $black;
+            font-style: oblique;
+            padding: 5px 30px;
+            font-weight: 600;
+            transition: 0.25s;
+            text-decoration: none;
+            margin-bottom: 35px;
+
+            &:hover {
+                background: $black;
+                color: $white;
+                transition: 0.25s;
+            }
+        }
+
+        .button-back-home {
+            display: none;
+        }
 
         h1 {
             font-size: 1.8rem;
@@ -107,16 +147,27 @@
             margin-bottom: 25px;
         }
 
-        .container-card-project {
+        .container-card {
             display: flex;
             flex-direction: column;
             border: 1px solid lightgray;
             margin-right: auto;
             margin-left: auto;
-            width: 75%;
+            width: 70%;
             background-color: $primarycolor;
             margin-bottom: 50px;
 
+            .image-techno {
+                margin: 15px 25px;
+                display: flex;
+                justify-content: center;
+
+                img {
+                    height: 60px;
+                    width: 60px;
+                    object-fit: cover;
+                }
+            }
 
             .image-project {
                 position: relative;
@@ -193,7 +244,7 @@
 
             /* End of effects*/
 
-            .title-project {
+            .title {
                 display: flex;
                 align-items: center;
                 color: white;
@@ -205,7 +256,7 @@
                 margin: 15px;
             }
 
-            .container-button-project {
+            .container-button-edit-delete {
                 display: flex;
                 align-items: center;
                 flex-direction: row;
@@ -221,6 +272,7 @@
                     font-weight: 600;
                     cursor: pointer;
                     margin-right: 20px;
+                    text-decoration: none;
 
                     &:hover {
                         background-color: white;
@@ -334,24 +386,10 @@
                         border: solid darkgoldenrod 3px;
                     }
                 }
-
-                .button-back {
-                    width: 60%;
-                    margin: 10px auto 10px auto;
-                    height: auto;
-                    border: solid white 3px;
-                    cursor: pointer;
-
-                    &:hover {
-                        transition: 0.25s;
-                        background-color: pink;
-                        border: solid pink 3px;
-                    }
-                }
             }
         }
 
-        .project-container-right {
+        .container-right {
             display: flex;
             flex-direction: column;
             position: fixed;
@@ -361,6 +399,48 @@
             overflow-x: auto;
             justify-content: space-around;
 
+            .add {
+                background: none;
+                color: $black;
+                border: solid 3px $black;
+                font-style: oblique;
+                padding: 5px 30px;
+                font-weight: 600;
+                transition: 0.25s;
+                text-decoration: none;
+
+                &:hover {
+                    background: $black;
+                    color: $white;
+                    transition: 0.25s;
+                }
+            }
+
+            .button-back-home-mobile {
+                display: none;
+            }
+
+            .button-back-home {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                color: $black;
+                border: solid 3px $black;
+                font-style: oblique;
+                padding: 0 30px;
+                font-weight: 600;
+                transition: 0.25s;
+                display: block;
+                text-decoration: none;
+
+                &:hover {
+                    background: $black;
+                    color: $white;
+                    transition: 0.25s;
+                }
+            }
+
             h1 {
                 font-style: oblique;
                 font-weight: 700;
@@ -369,17 +449,27 @@
                 font-size: 45px;
             }
 
-            .container-card-project {
+            .container-card {
                 display: flex;
                 flex-direction: row;
                 border: 1px solid lightgray;
                 margin-left: auto;
                 margin-right: auto;
-                width: 75%;
+                width: 65%;
                 background-color: $primarycolor;
                 box-shadow: 2px 3px lightgrey;
                 border-radius: 0 10px 10px 0;
                 margin-bottom: 0;
+
+                .image-techno {
+                    margin: 10px 25px;
+
+                    img {
+                        height: 45px;
+                        width: 45px;
+                        object-fit: cover;
+                    }
+                }
 
                 .image-project {
                     position: relative;
@@ -455,25 +545,26 @@
 
                 /* End of effects*/
 
-                .title-project {
+                .title {
                     display: flex;
                     align-items: center;
                     color: white;
                     width: 75%;
-                    justify-content: center;
+                    justify-content: flex-start;
                     font-weight: 700;
                     font-style: oblique;
                     font-family: $textfont;
-                    margin: 0;
+                    margin-left: 35px;
                 }
 
-                .container-button-project {
+                .container-button-edit-delete {
                     display: flex;
                     align-items: center;
                     flex-direction: row;
                     width: 25%;
                     justify-content: center;
                     margin-bottom: 0;
+                    margin-right: 15px;
 
                     .btn-edit {
                         border: 2px solid white;
@@ -483,6 +574,7 @@
                         font-weight: 600;
                         cursor: pointer;
                         margin-right: 20px;
+                        text-decoration: none;
 
                         &:hover {
                             background-color: white;
