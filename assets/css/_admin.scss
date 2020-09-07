@@ -21,6 +21,20 @@
         flex-direction: column;
         z-index: 1;
 
+        .nav-admin-mobile {
+            padding: 0;
+
+            .header-mobile-admin {
+                background-color: darkgoldenrod;
+                padding: 10px;
+                width: 100%;
+
+                button {
+                    margin-left: 40px;
+                }
+            }
+        }
+
         .title-admin {
             font-weight: 700;
             font-style: oblique;
