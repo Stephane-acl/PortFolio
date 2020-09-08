@@ -22,6 +22,15 @@
                 </div>
                 <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
                     <p>{{ project.description }}</p>
+
+                    <!--Display the number of commit -->
+                    <div class="d-flex align-items-center show-commit">
+                        {{ render(controller(
+                            'App\\Controller\\AppController::showStats',
+                            {repo : project.nameRepo, info : 'contributors'}
+                        )) }}
+                    </div>
+
                     {% if project.link is not empty %}
                         <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
                     {% endif %}
@@ -61,16 +70,24 @@
             <div class="caption">
                 Technologies utilisées
             </div>
-            <span>
+            <span style="cursor: pointer"  onmouseover="showPercent()">
             {% for techno in project.techno %}
                 <img src="{{ vich_uploader_asset(techno, 'technoFile') }}"
-                     alt="{{ techno.name }}" title="{{ techno.title }}" />
+                     alt="{{ techno.name }}" title="{{ techno.title }}"/>
             {% endfor %}
             </span>
             <h2 class="second-title">Le Client</h2>
             <span>{{ project.client.name }}</span>
         </div>
+        <!-- Display the statistics of each techno"-->
+        <div id="stats-languages">
+            {{ render(controller(
+                'App\\Controller\\AppController::showStats',
+                {repo : project.nameRepo, info : 'languages'}
+            )) }}
+        </div>
     </div>
+
     <div class="footer-project-page">
         <nav class="navbar navbar-expand-lg navbar-light">
 
@@ -101,4 +118,16 @@
         <a href="https://www.linkedin.com/in/st%C3%A9phane-acloque-b679751a4/" target="_blank" title="Linkedin"><img
                     src="{{ asset('img/linkedin.svg') }}" alt="logo LinkedIn" class="text-center"></a>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function showPercent() {
+            let tech = document.getElementById("stats-languages");
+            tech.className = "show";
+            setTimeout(function () {
+                tech.className = tech.className.replace("show", "");
+            }, 4000);
+        }
+    </script>
 {% endblock %}

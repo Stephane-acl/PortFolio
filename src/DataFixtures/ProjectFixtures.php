@@ -30,18 +30,23 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             'link' => '',
 
             'client' => 'client_0',
+
+            'repo' => 'Golden-retro'
         ],
+
         'Adventure Couch' => [
             'description' => "Adventure Couch est un jeu qui permet de déplacer un canapé sur une grille et de faire voyager celui-ci en prenant l'avion.
              En prenant l'avion vous passez au niveau supérieur.
              Mais pour cela il faudra répondre à des questions.
              Nous étions 6 personnes pour développer ce projet en 24 heures lors d'un Hackathon organisé par la Wild Code School.
              Le thème était \"Voyager depuis son canapé\".
-             Nous avons utilisé JQuery et PHP pour développer cette application",
+             Nous avons utilisé JQuery et PHP pour développer cette application.",
 
             'link' => '',
 
             'client' => 'client_0',
+
+            'repo' => 'adventure-couch'
         ],
 
         'SideBySide' => [
@@ -52,6 +57,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             'link' => 'https://sidebysides.herokuapp.com/',
 
             'client' => 'client_0',
+
+            'repo' => 'lyon-php-2003-project2-sidebyside'
         ],
 
         'Doctopet' => [
@@ -65,6 +72,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             'link' => '',
 
             'client' => 'client_1',
+
+            'repo' => 'doctopet'
         ],
 
         'La Gare Centrale' => [
@@ -76,6 +85,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             'link' => 'http://garecentrale.thegreenergood.fr/login',
 
             'client' => 'client_2',
+
+            'repo' => 'lyon-php-2003-project3-greenergood'
         ],
     ];
 
@@ -89,6 +100,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $project->setDescription($data['description']);
             $project->setDate(new DateTime('10-03-2020'));
             $project->setLink($data['link']);
+            $project->setNameRepo($data['repo']);
             $project->setClient($this->getReference($data['client']));
             $slug = $slugify->generate($project->getName());
             $project->setSlug($slug);
