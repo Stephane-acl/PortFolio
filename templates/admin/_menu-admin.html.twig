@@ -1,5 +1,7 @@
 <div class="links-container-top-mobile">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light nav-admin-mobile">
+
+        <div class="header-mobile-admin">
         <div class="navbar-brand title-admin">Administration</div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
@@ -7,28 +9,29 @@
                 style="outline-style: none">
             <span class="navbar-toggler-icon"></span>
         </button>
+        </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto"></ul>
             <div class="form-inline my-2 my-lg-0 mobile-nav">
                 <a class="nav-link admin-button button-hover" href="{{ path('admin_client_index') }}">
-                    Gérer les clients
+                    Voir les clients
                 </a>
 
                 <a class="nav-link admin-button button-hover" href="{{ path('admin_picture_index') }}">
-                    Gérer les photos
+                    Voir les photos
                 </a>
 
                 <a class="nav-link admin-button button-hover" href="{{ path('admin_techno_index') }}">
-                    Gérer les technos
+                    Voir les technos
                 </a>
 
                 <a class="nav-link admin-button button-hover" href="{{ path('admin_user_index') }}">
-                    Gérer mon profil
+                    Voir mon profil
                 </a>
 
                 <a class="nav-link admin-button button-hover" href="{{ path('admin_message_index') }}">
-                    Gérer mes messages
+                    Voir mes messages
                 </a>
                 <div class="admin-button button-new-project"
                      onclick="window.location.href = '{{ path('admin_project_new') }}'">
@@ -53,23 +56,23 @@
     <h1 class="title-admin">Administration</h1>
 
     <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_client_index') }}'">
-        Gérer les clients
+        Voir les clients
     </div>
 
     <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_picture_index') }}'">
-        Gérer les photos
+        Voir les photos
     </div>
 
     <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_techno_index') }}'">
-        Gérer les technos
+        Voir les technos
     </div>
 
     <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_user_index') }}'">
-        Gérer mon profil
+        Voir mon profil
     </div>
 
     <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_message_index') }}'">
-        Gérer mes messages
+        Voir mes messages
     </div>
 
     <div class="container-button-left">

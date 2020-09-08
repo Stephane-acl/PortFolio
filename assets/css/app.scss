@@ -470,6 +470,50 @@ nav {
         margin-top: 15px;
         text-transform: uppercase;
     }
+
+    //Display the statistics of each techno in a box mobile view
+    #stats-languages {
+        visibility: hidden;
+        min-width: 200px;
+        margin-left: -100px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 14px;
+    }
+
+    #stats-languages.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 1s 3.1s;
+        animation: fadein 0.5s, fadeout 1s 3.1s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+
 }
 
 .footer-project-page {
@@ -512,6 +556,17 @@ nav {
         .project-padding {
             padding-left: 70px;
             padding-right: 70px;
+
+            .show-commit {
+                margin-bottom: 20px;
+                font-family: $textfont;
+
+                strong {
+                    color: $primarycolor;
+                    font-weight: normal;
+                    margin-left: 5px;
+                }
+            }
         }
 
         .main-title {
@@ -612,7 +667,51 @@ nav {
             text-transform: uppercase;
             margin-top: 15px;
         }
+
+        //Display the statistics of each techno in a box desktop view
+        #stats-languages {
+            visibility: hidden;
+            min-width: 275px;
+            margin-left: -140px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        #stats-languages.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 1s 3.1s;
+            animation: fadein 0.5s, fadeout 1s 3.1s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
     }
+
     .footer-project-page {
         height: 100px;
         margin-top: 100px;
@@ -877,5 +976,3 @@ nav {
         }
     }
 }
-
-

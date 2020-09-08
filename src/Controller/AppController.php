@@ -8,6 +8,7 @@ use App\Entity\Project;
 use App\Form\MessageType;
 use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
+use App\Service\API\GithubManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +54,7 @@ class AppController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
+    public function newMessage(Request $request): Response
     {
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
@@ -75,6 +76,16 @@ class AppController extends AbstractController
         return $this->render('message/new.html.twig', [
             'message' => $message,
             'form' => $form->createView(),
+        ]);
+    }
+
+    public function showStats(string $repo, ?string $info, GithubManager $githubManager) :Response
+    {
+        $stats = $githubManager->getStats($repo, $info);
+
+        return $this->render('project/_stats.html.twig', [
+            "stats" => $stats,
+            "info" => $info,
         ]);
     }
 }

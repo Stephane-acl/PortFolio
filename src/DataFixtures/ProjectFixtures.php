@@ -37,7 +37,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
              Mais pour cela il faudra répondre à des questions.
              Nous étions 6 personnes pour développer ce projet en 24 heures lors d'un Hackathon organisé par la Wild Code School.
              Le thème était \"Voyager depuis son canapé\".
-             Nous avons utilisé JQuery et PHP pour développer cette application",
+             Nous avons utilisé JQuery et PHP pour développer cette application.",
 
             'link' => '',
 
