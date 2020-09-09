@@ -405,6 +405,35 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_message_index');
     }
 
+    /**
+     * @Route("/message/read/{id}", name="message_read", methods={"GET"})
+     * @param Message $message
+     * @return Response
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function MessageRead(Message $message): Response
+    {
+        if ($message->getMessageRead() == false)
+        {
+            $message->setMessageRead(true);
+        } else {
+            $message->setMessageRead(false);
+        }
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('admin_message_index');
+    }
+
+    //Display the status of the message , read or unread
+    public function showMessageStatus(MessageRepository $messageRepository) :Response
+    {
+        $messages = count($messageRepository->findBy(['messageRead' => false]));
+
+        return $this->render('admin/message/_messageStatus.html.twig', [
+            "messages" => $messages,
+        ]);
+    }
+
     /** USER **/
 
     /**

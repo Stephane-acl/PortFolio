@@ -31,8 +31,11 @@
                 </a>
 
                 <a class="nav-link admin-button button-hover" href="{{ path('admin_message_index') }}">
-                    Voir mes messages
+                    Voir mes messages {{ render(controller(
+                        'App\\Controller\\AdminController::showMessageStatus'
+                    )) }}
                 </a>
+
                 <div class="admin-button button-new-project"
                      onclick="window.location.href = '{{ path('admin_project_new') }}'">
                     Nouveau projet
@@ -72,7 +75,9 @@
     </div>
 
     <div class="admin-button button-hover" onclick="window.location.href = '{{ path('admin_message_index') }}'">
-        Voir mes messages
+        Voir mes messages {{ render(controller(
+            'App\\Controller\\AdminController::showMessageStatus'
+        )) }}
     </div>
 
     <div class="container-button-left">

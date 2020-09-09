@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MessageRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -39,6 +40,17 @@ class Message
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @var DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $messageRead = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,7 +64,9 @@ class Message
     public function setMessage(?string $message): self
     {
         $this->message = $message;
-
+        if ($message) {
+            $this->createdAt = new DateTime('now');
+        }
         return $this;
     }
 
@@ -76,6 +90,30 @@ class Message
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getMessageRead(): ?bool
+    {
+        return $this->messageRead;
+    }
+
+    public function setMessageRead(bool $messageRead): self
+    {
+        $this->messageRead = $messageRead;
 
         return $this;
     }
