@@ -14,6 +14,6 @@ Run yarn install
 Change database infos in .env.local
 Create database / apply migrations / load fixtures
 
-Admin can:
-Add projects, techs, and pictures
-Consult messages received
+DO NOT FORGET to fill in the environment variables GITHUB
+
+WARNING, put a valid Github link for projects, otherwise API does not make the link.

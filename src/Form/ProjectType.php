@@ -26,6 +26,7 @@ class ProjectType extends AbstractType
                 'by_reference' => false,
                 'label' => 'TechnoUsed\'s',
             ])
+            ->add('nameRepo', null, ['label' => 'Repo associé', 'empty_data'=> ''])
             ->add('link', null, ['label' => 'Lien vers le projet', 'empty_data'=> ''])
         ;
     }
