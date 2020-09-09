@@ -21,8 +21,8 @@ class UserFixtures extends Fixture
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();
         $admin->setUsername('Stéphane');
-        $admin->setLinkedin('https://www.linkedin.com/feed/');
-        $admin->setFonction('Développeur Web');
+        $admin->setLinkedin('https://www.linkedin.com/in/st%C3%A9phane-acloque-b679751a4/');
+        $admin->setFonction('Développeur Web Junior');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPicture('steph.jpg');
         $admin->setPassword($this->passwordEncoder->encodePassword(
