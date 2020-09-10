@@ -381,7 +381,7 @@ class AdminController extends AbstractController
     public function indexMessage(MessageRepository $messageRepository): Response
     {
         return $this->render('admin/message/index.html.twig', [
-            'messages' => $messageRepository->findAll(),
+            'messages' => $messageRepository->findBy([], ['id' => 'desc']),
         ]);
     }
 
