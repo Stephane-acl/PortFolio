@@ -431,6 +431,17 @@
                 display: flex;
                 width: 100%;
 
+                .header-message {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 19px;
+                    padding: 0 10px;
+
+                    .message-date {
+                        color: darkgoldenrod;
+                    }
+                }
+
                 .envelope {
                     position: absolute;
                     right: 65px;
@@ -956,6 +967,17 @@
                     flex-direction: row;
                     display: flex;
                     width: 100%;
+
+                    .header-message {
+                        display: flex;
+                        flex-direction: row;
+                        font-size: 22px;
+
+                        .message-date {
+                            margin-left: 20px;
+                            color: darkgoldenrod;
+                        }
+                    }
 
                     .envelope {
                         position: absolute;
