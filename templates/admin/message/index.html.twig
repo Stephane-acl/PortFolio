@@ -11,7 +11,10 @@
                 <div class="container-card-message d-flex justify-content-center align-items-center flex-column">
 
                     <div class="message-number">
-                        Message #{{ message.id }}
+                        <div class="header-message">
+                            <div>Message #{{ message.id }}</div>
+                            <div class="message-date">Le {{ message.createdAt ? message.createdAt|date('d-m-Y') }}</div>
+                        </div>
                         <a href="{{ path('admin_message_read', {'id': message.id}) }}">
                             {% if message.messageRead == 0 %}
                                 <button class="envelope btn-lg"><i class="fa fa-envelope"></i></button>
