@@ -23,13 +23,15 @@
                 <div class="col-md-8 col-sm-9 col-xs-12 project-padding">
                     <p>{{ project.description }}</p>
 
-                    <!--Display the number of commit -->
-                    <div class="d-flex align-items-center show-commit">
-                        {{ render(controller(
-                            'App\\Controller\\AppController::showStats',
-                            {repo : project.nameRepo, info : 'contributors'}
-                        )) }}
-                    </div>
+                    {% if project.nameRepo is not empty %}
+                        <!--Display the number of commit -->
+                        <div class="d-flex align-items-center show-commit">
+                            {{ render(controller(
+                                'App\\Controller\\AppController::showStats',
+                                {repo : project.nameRepo, info : 'contributors'}
+                            )) }}
+                        </div>
+                    {% endif %}
 
                     {% if project.link is not empty %}
                         <a href="{{ project.link }}" class="project-link" target="_blank">Voir le projet</a>
@@ -54,6 +56,8 @@
                                  src="{{ vich_uploader_asset(picture, 'pictureFile') }}"
                                  alt="{{ project.name }}"/>
                         </div>
+                    {% else %}
+                        <img class="d-block w-100" src=" {{ asset('img/paper.jpeg') }}" alt="Image papier et stylo"/>
                     {% endfor %}
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -67,25 +71,31 @@
             </div>
         </div>
         <div class="container-technos">
-            <div class="caption">
-                Technologies utilisées
-            </div>
-            <span style="cursor: pointer"  onmouseover="showPercent()">
+            {% if project.techno is not empty %}
+                <div class="caption">
+                    Technologies utilisées
+                </div>
+                <span style="cursor: pointer" onmouseover="showPercent()">
             {% for techno in project.techno %}
                 <img src="{{ vich_uploader_asset(techno, 'technoFile') }}"
                      alt="{{ techno.name }}" title="{{ techno.title }}"/>
             {% endfor %}
             </span>
+            {% endif %}
             <h2 class="second-title">Le Client</h2>
             <span>{{ project.client.name }}</span>
         </div>
-        <!-- Display the statistics of each techno"-->
-        <div id="stats-languages">
-            {{ render(controller(
-                'App\\Controller\\AppController::showStats',
-                {repo : project.nameRepo, info : 'languages'}
-            )) }}
-        </div>
+
+        {% if project.nameRepo is not empty %}
+            <!-- Display the statistics of each techno"-->
+            <div id="stats-languages">
+                {{ render(controller(
+                    'App\\Controller\\AppController::showStats',
+                    {repo : project.nameRepo, info : 'languages'}
+                )) }}
+            </div>
+        {% endif %}
+
     </div>
 
     <div class="footer-project-page">

@@ -286,7 +286,7 @@ nav {
             flex-wrap: wrap;
             margin-left: auto;
             margin-right: auto;
-            width: 75%;
+            width: 80%;
 
             //Effects on the images
 
@@ -972,11 +972,7 @@ nav {
         position: relative;
 
         &:before {
-            font-family: $titlefont;
-            content: '\f00c';
             display: block;
-            color: grey;
-            font-size: 13px;
             position: absolute;
         }
     }
@@ -1009,33 +1005,6 @@ nav {
         input, textarea, select {
             box-shadow: 2px 3px 6px lightgrey;
             border-radius: 10px;
-        }
-
-        input[type=checkbox] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -ms-appearance: none;
-        }
-
-        input[type=checkbox] {
-            border-radius: 4px;
-            height: 15px;
-            width: 15px;
-            background: #fff;
-        }
-
-        input[type="checkbox"]:checked {
-            background: yellow;
-            position: relative;
-
-            &:before {
-                font-family: $textfont;
-                content: '\f00c';
-                display: block;
-                color: grey;
-                font-size: 13px;
-                position: absolute;
-            }
         }
 
         .btn {
