@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Project;
 use App\Entity\Techno;
+use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,11 +18,15 @@ class ProjectType extends AbstractType
         $builder
             ->add('name',null,['label'=>'Nom', 'empty_data' => ''])
             ->add('description', null,['label'=>'Description', 'empty_data' => ''])
-            ->add('date',null,['label'=>'Date', 'empty_data' => ''])
+            ->add('date', DateType::class, [
+                'label' => "Date",
+                'format' => 'dd-MM-yyyy',
+                "data" => new DateTime(),
+            ])
             ->add('client', null, ['choice_label' => 'name', 'empty_data'=> ''])
             ->add('techno', EntityType::class, [
                 'class' => Techno::class,
-                'choice_label' => 'name',
+                'choice_label' => 'title',
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference' => false,

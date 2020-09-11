@@ -46,7 +46,7 @@ class AdminController extends AbstractController
     public function indexClient(ClientRepository $clientRepository): Response
     {
         return $this->render('admin/client/index.html.twig', [
-            'clients' => $clientRepository->findAll(),
+            'clients' => $clientRepository->findBy([], ['id' => 'desc']),
         ]);
     }
 
@@ -127,7 +127,7 @@ class AdminController extends AbstractController
     public function indexProject(ProjectRepository $projectRepository): Response
     {
         return $this->render('admin/project/index.html.twig', [
-            'projects' => $projectRepository->findAll(),
+            'projects' => $projectRepository->findBy([], ['id' => 'desc']),
         ]);
     }
 
@@ -213,7 +213,7 @@ class AdminController extends AbstractController
     public function indexPicture(PictureRepository $pictureRepository): Response
     {
         return $this->render('admin/picture/index.html.twig', [
-            'pictures' => $pictureRepository->findAll(),
+            'pictures' => $pictureRepository->findBy([], ['id' => 'desc']),
         ]);
     }
 
