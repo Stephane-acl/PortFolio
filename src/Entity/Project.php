@@ -70,7 +70,7 @@ class Project
     private $slug;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,  nullable=true)
      */
     private $nameRepo;
 
@@ -221,7 +221,7 @@ class Project
         return $this->nameRepo;
     }
 
-    public function setNameRepo(string $nameRepo): self
+    public function setNameRepo(?string $nameRepo): self
     {
         $this->nameRepo = $nameRepo;
 

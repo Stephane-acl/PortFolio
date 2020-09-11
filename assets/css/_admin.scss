@@ -830,8 +830,9 @@
                     justify-content: center;
 
                     img {
-                        height: 130px;
-                        width: auto;
+                        height: 150px;
+                        width: 265px;
+                        object-fit: cover;
                     }
                 }
 
@@ -856,6 +857,9 @@
                     opacity: 1;
                     -webkit-transition: .3s ease-in-out;
                     transition: .3s ease-in-out;
+                    height: 150px;
+                    width: 265px;
+                    object-fit: cover;
                 }
 
                 .effect:hover img {

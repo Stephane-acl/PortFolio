@@ -20,6 +20,10 @@
                     <div class="image-project zoom effect">
                         {% if project.picture[0] is not defined %}
                             <img src=" {{ asset('img/paper.jpeg') }}" alt="Image papier et stylo"/>
+                            <div class="btn-see btn-see-hover"
+                                 onclick="window.location.href = '{{ path('app_project_show', {'slug': project.slug}) }}'">
+                                Voir
+                            </div>
                         {% else %}
                             <img src="{{ vich_uploader_asset(project.picture[0], 'pictureFile') }}"
                                  alt="{{ project.name }}"/>
@@ -42,7 +46,7 @@
                         {{ include('admin/project/_delete_form.html.twig') }}
                     </div>
                 </div>
-                {% else %}
+            {% else %}
                 <div class="d-flex justify-content-center align-items-center empty-message">
                     AUCUN PROJETS
                 </div>
